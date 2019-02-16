@@ -41,22 +41,17 @@ app.get('/api', (req, res) => {
       })
 })
 
-// view all reviews
+// view all user
 app.get('/api/user', (req, res) => {
-    db.User.find({}, (err, foundReview) => {
-      if (err) return console.log(err);
-      res.json(foundReview);
-    });
+  db.User.find({}, (err, foundReview) => {
+    if (err) return console.log(err);
+    res.json(foundReview);
   });
-
-  // res.json(Review);
 });
 
 // view one review
 app.get('/api/book/:id', (req, res) => {
-  db.Book.findOneAndDelete({
-    _id: req.params.id
-  }, (err, foundBook) => {
+  db.Book.findOneAndDelete({_id: req.params.id}, (err, foundBook) => {
     res.json(foundBook);
   })
 });
@@ -64,7 +59,7 @@ app.get('/api/book/:id', (req, res) => {
 
 // define a root route: localhost:3000/
 app.get('/', (req, res) => {
-  res.sendFile('views/index.html' , { root : __dirname});
+  res.sendFile('views/index.html', {root : __dirname});
 });
 
 //find all users
@@ -77,9 +72,7 @@ app.get('/api/user', (req, res) => {
 
 //find one user
 app.get('/api/user/:id', (req, res) => {
-  db.User.findOne({
-    _id: req.params.id
-  }, (err, foundUser) => {
+  db.User.findOne({_id: req.params.id}, (err, foundUser) => {
     res.json(foundUser);
   });
 });
@@ -97,6 +90,25 @@ app.post('/api/user', (req, res) => {
     if (err) {throw err}
     res.json(userCreated);
   });
+});
+
+app.put('/api/user/:id', (req, res) => {
+  let userId = req.params.id;
+  db.User.findOneAndUpdate({ _id: userId }, (err, updatedUser) => {
+  res.json(updatedUser);
+  });
+});
+
+app.delete('/api/user/:id', (req, res) => {
+  // let userId = req.params.id;
+  // db.User.findOneAndRemove({_id: userId }), (err, deletedUser) => {
+  //   res.json(deletedUser);
+  // }
+  let userId = req.params.id;
+  db.User.findOneAndRemove({ _id: userId}).exec((err, deletedUser) => {
+    if (err) return console.log(err);
+    res.json(deletedUser);
+});
 });
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
