@@ -66,22 +66,22 @@ let places_list = [
     }
 ];
 
-db.Review.remove({}, (err, movies) => {
-    db.Review.create(reviews_list, function(err, movie){
+db.Review.remove({}, (err, reviews) => {
+    db.Review.create(reviews_list, function(err, reviews){
     if (err){
         return console.log("Error:", err);
     }
-    console.log(`Created new review: ${review.text}`);
+    console.log(`Created new review: ${reviews.text}`);
     process.exit();
 });
 });
 
-db.User.remove({}, (err, movies) => {
-    db.User.create(users_list, function(err, user){
+db.User.remove({}, (err, users) => {
+    db.User.create(users_list, function(err, users){
     if (err){
         return console.log("Error:", err);
     }
-    console.log(`Created new user ${user.username}`);
+    console.log(`Created new user ${users.username}`);
     process.exit();
 });
 });
