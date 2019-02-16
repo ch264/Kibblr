@@ -42,8 +42,8 @@ app.get('/api', (req, res) => {
 })
 
 // view all reviews
-app.get('/api/review', (req, res) => {
-    db.Place.find({}, (err, foundReview) => {
+app.get('/api/user', (req, res) => {
+    db.User.find({}, (err, foundReview) => {
       if (err) return console.log(err);
       res.json(foundReview);
     });
