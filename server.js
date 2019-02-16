@@ -80,6 +80,28 @@ app.post('/api/user', (req, res) => {
   });
 });
 
+app.put('/api/user/:id', (req, res) => {
+  let userId = req.params.id;
+  console.log(userId);
+  db.User.findOneAndUpdate({ _id: userId }, req.body, (err, updatedUser) => {
+  console.log(updatedUser);
+  res.json(updatedUser);
+})
+})
+
+app.delete('/api/user/:id', (req, res) => {
+  // let userId = req.params.id;
+  // db.User.findOneAndRemove({_id: userId }), (err, deletedUser) => {
+  //   res.json(deletedUser);
+  // }
+  let userId = req.params.id;
+  db.User.findOneAndRemove({ _id: userId})
+  .exec((err, deletedUser) => {
+    if (err) return console.log(err);
+    res.json(deletedUser);
+});
+});
+
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 3000, () => {
     console.log('Express server is up and running on http://localhost:3000/');
