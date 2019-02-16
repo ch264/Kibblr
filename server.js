@@ -41,6 +41,25 @@ app.get('/api', (req, res) => {
       })
 })
 
+// view all reviews
+app.get('/api/review', (req, res) => {
+    db.Place.find({}, (err, foundReview) => {
+      if (err) return console.log(err);
+      res.json(foundReview);
+    });
+  });
+
+  // res.json(Review);
+});
+
+// view one review
+app.get('/api/book/:id', (req, res) => {
+  db.Book.findOneAndDelete({
+    _id: req.params.id
+  }, (err, foundBook) => {
+    res.json(foundBook);
+  })
+});
 
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
