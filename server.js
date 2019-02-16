@@ -67,9 +67,37 @@ app.get('/', (req, res) => {
   res.sendFile('views/index.html' , { root : __dirname});
 });
 
-app.get('/api/place', (req, res) => {
-  console.log("This is the Kibblr user profile!");
-})
+//find all users
+app.get('/api/user', (req, res) => {
+  db.User.find({}, (err, foundUsers) => {
+    if (err) return console.log(err);
+    res.json(foundUsers);
+  });
+});
+
+//find one user
+app.get('/api/user/:id', (req, res) => {
+  db.User.findOne({
+    _id: req.params.id
+  }, (err, foundUser) => {
+    res.json(foundUser);
+  });
+});
+
+//create a user
+app.post('/api/user', (req, res) => {
+  let newUser = new db.User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    username: req.body.username
+  });
+
+  db.User.create(newUser, (err, userCreated) => {
+    if (err) {throw err}
+    res.json(userCreated);
+  });
+});
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 3000, () => {
