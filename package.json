@@ -1,0 +1,24 @@
+{
+  "name": "project01",
+  "version": "1.0.0",
+  "description": "A full-stack web application built from the ground up by Brandon Castillo, Tiffany Teaze and Christina Hastenrath.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonmcastillo/Project01.git"
+  },
+  "author": "Tiffany Teaze tteaze@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandonmcastillo/Project01/issues"
+  },
+  "homepage": "https://github.com/brandonmcastillo/Project01#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.13"
+  }
+}
