@@ -94,10 +94,12 @@ app.post('/api/user', (req, res) => {
 
 app.put('/api/user/:id', (req, res) => {
   let userId = req.params.id;
-  db.User.findOneAndUpdate({ _id: userId }, (err, updatedUser) => {
+  console.log(userId);
+  db.User.findOneAndUpdate({ _id: userId }, req.body, (err, updatedUser) => {
+  console.log(updatedUser);
   res.json(updatedUser);
-  });
-});
+})
+})
 
 app.delete('/api/user/:id', (req, res) => {
   // let userId = req.params.id;
@@ -105,7 +107,8 @@ app.delete('/api/user/:id', (req, res) => {
   //   res.json(deletedUser);
   // }
   let userId = req.params.id;
-  db.User.findOneAndRemove({ _id: userId}).exec((err, deletedUser) => {
+  db.User.findOneAndRemove({ _id: userId})
+  .exec((err, deletedUser) => {
     if (err) return console.log(err);
     res.json(deletedUser);
 });
