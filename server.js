@@ -65,6 +65,21 @@ app.get('/api/user/:id', (req, res) => {
   });
 });
 
+//create a user
+app.post('/api/user', (req, res) => {
+  let newUser = new db.User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    username: req.body.username
+  });
+
+  db.User.create(newUser, (err, userCreated) => {
+    if (err) {throw err}
+    res.json(userCreated);
+  });
+});
+
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 3000, () => {
     console.log('Express server is up and running on http://localhost:3000/');
