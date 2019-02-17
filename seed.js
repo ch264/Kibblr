@@ -85,3 +85,13 @@ db.User.remove({}, (err, users) => {
     process.exit();
 });
 });
+
+db.Place.remove({}, (err, places) => {
+    db.Place.create(places_list, function(err, places){
+        if (err){
+            return console.log("Error:", err);
+    }
+    console.log(`Created new place: ${places.text}`);
+    process.exit();
+    });
+});

@@ -160,6 +160,58 @@ app.delete('/api/place/:id', (req, res) => {
   });
 });
 
+// show all review
+//////////////////
+// Reviews Routes
+//////////////////
+
+//find all reviews
+app.get('/api/review', (req, res) => {
+  db.Review.find({}, (err, foundReviews) => {
+    if (err) return console.log(err);
+    res.json(foundReviews);
+  });
+});
+
+//find one review
+app.get('/api/review/:id', (req, res) => {
+  db.Review.findOne({_id: req.params.id}, (err, foundReview) => {
+    res.json(foundReview);
+  });
+});
+
+//create a review
+app.post('/api/review', (req, res) => {
+  let Review = new db.Review({
+    date: req.body.date,
+    rating: req.body.rating,
+    text: req.body.text
+  });
+
+  db.Review.create(Review, (err, reviewCreated) => {
+    if (err) {throw err}
+    res.json(reviewCreated);
+  });
+});
+
+app.put('/api/review/:id', (req, res) => {
+  let reviewId = req.params.id;
+  console.log(reviewId);
+  db.Review.findOneAndUpdate({ _id: reviewId }, req.body, (err, updatedReview) => {
+    console.log(updatedReview);
+    res.json(updatedReview);
+  });
+});
+
+app.delete('/api/review/:id', (req, res) => {
+  let reviewId = req.params.id;
+  db.Review.findOneAndRemove({ _id: reviewId})
+  .exec((err, deletedReview) => {
+    if (err) return console.log(err);
+    res.json(deletedReview);
+  });
+});
+
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 3000, () => {
     console.log('Express server is up and running on http://localhost:3000/');
