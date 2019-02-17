@@ -86,12 +86,22 @@ db.User.remove({}, (err, users) => {
 });
 });
 
-db.Place.remove({}, (err, places) => {
-    db.Place.create(places_list, function(err, places){
-        if (err){
-            return console.log("Error:", err);
-    }
-    console.log(`Created new place: ${places.text}`);
-    process.exit();
+db.Place.deleteMany({}, function(err, places) {
+    console.log('removed all places');
+
+    places_list.forEach(function (placeData) {
+        var place = new db.Place({
+            name: placeData.name,
+            type: placeData.type,
+            review: placeData.review,
+            address: placeData.review
+        });
+
+        place.save(function(err, savedPlace) {
+            if (err) {
+                console.log(err);
+            }
+            console.log('saved ' + savedPlace.name + ' by ' + savedPlace.type);
+        });
     });
 });

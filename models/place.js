@@ -1,6 +1,6 @@
-let mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
-    Review = require('./review');
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
+//Review = require('./review');
 
 let PlaceSchema = new Schema({
     name: String,
