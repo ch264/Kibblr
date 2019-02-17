@@ -198,6 +198,7 @@ app.put('/api/review/:id', (req, res) => {
   let reviewId = req.params.id;
   console.log(reviewId);
   db.Review.findOneAndUpdate({ _id: reviewId }, req.body, (err, updatedReview) => {
+    if (err) return console.log(err);
     console.log(updatedReview);
     res.json(updatedReview);
   });
