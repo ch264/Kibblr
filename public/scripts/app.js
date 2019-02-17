@@ -1,9 +1,13 @@
 $(function() {
     console.log( "ready!" );
 
-//Click on Header
+//Click on header leads to main page
 $('.navbar-brand').click(function(){
   window.location.href = "/Users/User/Desktop/Project01/views/index.html";
+})
+//Click on review button leads to page
+$('.review').click(function(){
+  window.location.href = "/Users/User/Desktop/Project01/views/reviewForm.html";
  
 })
 //Sign Up Form Validation
