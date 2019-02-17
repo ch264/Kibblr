@@ -135,7 +135,7 @@ app.get('/api/place/:id', (req, res) => {
 
 //create a place
 app.post('/api/place', (req, res) => {
-  let newPlace = new db.Place({
+  let Place = new db.Place({
     name: req.body.name,
     type: req.body.type,
     review: req.body.review,
@@ -143,7 +143,7 @@ app.post('/api/place', (req, res) => {
     rating: req.body.rating
   });
 
-  db.Place.create(newPlace, (err, placeCreated) => {
+  db.Place.create(Place, (err, placeCreated) => {
     if (err) {throw err}
     res.json(placeCreated);
   });
@@ -152,7 +152,7 @@ app.post('/api/place', (req, res) => {
 app.put('/api/place/:id', (req, res) => {
   let placeId = req.params.id;
   console.log(placeId);
-  db.User.findOneAndUpdate({ _id: userId }, req.body, (err, updatedPlace) => {
+  db.Place.findOneAndUpdate({ _id: placeId }, req.body, (err, updatedPlace) => {
     console.log(updatedPlace);
     res.json(updatedPlace);
   });
