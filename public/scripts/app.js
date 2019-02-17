@@ -1,6 +1,11 @@
 $(function() {
     console.log( "ready!" );
 
+//Click on Header
+$('.navbar-brand').click(function(){
+  window.location.href = "/Users/User/Desktop/Project01/views/index.html";
+ 
+})
 //Sign Up Form Validation
 (function() {
   'use strict';
