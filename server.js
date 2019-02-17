@@ -29,14 +29,18 @@ app.get('/api', (req, res) => {
         baseUrl: "http://YOUR-APP-NAME.herokuapp.com",
         endpoints: [
           {method: "GET", path: "/api", description: "Describes all available endpoints"},
-          {method: "GET", path: "/api/profile", description: "Data about the user"},
           {method: "GET", path: "/api/place", description: "Show all place reviews"},
           {method: "GET", path: "/api/place/:id", description: "Show a specific place"},
           {method: "GET", path: "/api/review", description: "Show all reviews"},
           {method: "GET", path: "/api/review/:id", description: "Show a specific review"},
           {method: "DELETE", path: "/api/review/:id", description: "Will delete a specific review."},
           {method: "POST", path: "/api/review", description: "Add a new review"},
-          {method: "PUT", path: "/api/review", description: "Edit a review."}
+          {method: "PUT", path: "/api/review", description: "Edit a review."},
+          {method: "GET", path: "/api/user", description: "View all users."},
+          {method: "GET", path: "/api/user/:id", description: "View one specific user."},
+          {method: "POST", path: "/api/user", description: "Add a user."},
+          {method: "PUT", path: "/api/user/:id", description: "Edit a user."},
+          {method: "DELETE", path: "/api/user/:id", description: "Delete a user."}
         ]
       })
 })
@@ -103,7 +107,58 @@ app.delete('/api/user/:id', (req, res) => {
 });
 
 // show all places
+//////////////////
+// Places Routes
+//////////////////
 
+//find all place
+app.get('/api/place', (req, res) => {
+  db.Place.find({}, (err, foundPlaces) => {
+    if (err) return console.log(err);
+    res.json(foundPlaces);
+  });
+});
+
+//find one place
+app.get('/api/place/:id', (req, res) => {
+  db.Place.findOne({_id: req.params.id}, (err, foundPlace) => {
+    res.json(foundPlace);
+  });
+});
+
+//create a place
+app.post('/api/place', (req, res) => {
+  let Place = new db.Place({
+    name: req.body.name,
+    type: req.body.type,
+    review: req.body.review,
+    address: req.body.address,
+    rating: req.body.rating
+  });
+
+  db.Place.create(Place, (err, placeCreated) => {
+    if (err) {throw err}
+    res.json(placeCreated);
+  });
+});
+
+app.put('/api/place/:id', (req, res) => {
+  let placeId = req.params.id;
+  console.log(placeId);
+  db.Place.findOneAndUpdate({ _id: placeId }, req.body, (err, updatedPlace) => {
+    console.log(updatedPlace);
+    res.json(updatedPlace);
+  });
+});
+
+app.delete('/api/place/:id', (req, res) => {
+  let placeId = req.params.id;
+  db.Place.findOneAndRemove({ _id: placeId})
+  .exec((err, deletedPlace) => {
+    if (err) return console.log(err);
+    res.json(deletedPlace);
+  });
+});
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 3000, () => {
