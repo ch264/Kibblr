@@ -11,29 +11,7 @@ $(function() {
         console.log("error");
     };
 
-    //Create a user through signup
-    $.ajax({
-        method: 'POST',
-        url: '/api/user',
-        success: handleResponse,
-        error: handleError
-    });
 
-    //Sign a user in 
-    $.ajax({
-        method: 'GET',
-        url: '/api/user',
-        success: handleResponse,
-        error: handleError
-    });
-
-    //Enter a review
-    // $.ajax({
-    //   method:
-    //   url:
-    //   success:
-    //   error:
-    // })
 
 
     // Redirection through clicks

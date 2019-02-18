@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
-let Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
+const User = require('./user');
+const Place = require('./place');
 
-let ReviewSchema = new Schema ({
+let ReviewSchema = new Schema({
     date: Date,
     rating: Number,
-    text: String
+    username: { type: Schema.Types.ObjectId, ref: 'User' },
+    text: String,
+    Place: { type: Schema.Types.ObjectId, ref: 'Place' }
 });
 
 var Review = mongoose.model('Review', ReviewSchema);

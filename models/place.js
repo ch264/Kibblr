@@ -1,11 +1,11 @@
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
-//Review = require('./review');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Review = require('./review');
 
 let PlaceSchema = new Schema({
     name: String,
     type: String,
-    review: String,
+    Review: [],
     address: String,
     rating: Number
 })

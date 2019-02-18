@@ -1,7 +1,6 @@
 const db = require('./models');
 
-let reviews_list = [
-    {
+let reviews_list = [{
         date: "February 15, 2019",
         rating: 4,
         username: "tiffany",
@@ -18,14 +17,13 @@ let reviews_list = [
     {
         date: "February 13, 2019",
         rating: 2,
-        username: "brandon",
+        username: 'brandon',
         text: "My dog hated this restaurant.",
         place: "Hops And Hominy"
     }
 ];
 
-let users_list = [
-    {
+let users_list = [{
         name: "Tiffany Teaze",
         email: "tteaze@gmail.com",
         password: "cookie123",
@@ -45,8 +43,7 @@ let users_list = [
     }
 ];
 
-let places_list = [
-    {
+let places_list = [{
         name: "Hops And Hominy",
         type: "restaurant",
         address: "1 Tillman Pl, San Francisco, CA 94108",
@@ -89,7 +86,7 @@ let places_list = [
 db.Place.deleteMany({}, function(err, places) {
     console.log('removed all places');
 
-    places_list.forEach(function (placeData) {
+    places_list.forEach(function(placeData) {
         var place = new db.Place({
             name: placeData.name,
             type: placeData.type,
@@ -110,7 +107,7 @@ db.Place.deleteMany({}, function(err, places) {
 db.User.deleteMany({}, function(err, users) {
     console.log('removed all users');
 
-    users_list.forEach(function (userData) {
+    users_list.forEach(function(userData) {
         var user = new db.User({
             name: userData.name,
             username: userData.username,
@@ -130,7 +127,7 @@ db.User.deleteMany({}, function(err, users) {
 db.Review.deleteMany({}, function(err, reviews) {
     console.log('removed all reviews');
 
-    reviews_list.forEach(function (reviewData) {
+    reviews_list.forEach(function(reviewData) {
         var review = new db.Review({
             date: reviewData.date,
             rating: reviewData.rating,
