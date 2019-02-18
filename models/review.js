@@ -8,7 +8,7 @@ let ReviewSchema = new Schema({
     rating: Number,
     username: { type: Schema.Types.ObjectId, ref: 'User' },
     text: String,
-    Place: { type: Schema.Types.ObjectId, ref: 'Place' }
+    place: { type: Schema.Types.ObjectId, ref: 'Place' }
 });
 
 var Review = mongoose.model('Review', ReviewSchema);

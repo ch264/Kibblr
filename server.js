@@ -202,6 +202,7 @@ app.post('/api/review', (req, res) => {
         username: req.body.username,
         rating: req.body.rating,
         text: req.body.text,
+        place: req.body.place
     });
     //find the place from the req.body
     // db.Place.findOne({ place: req.body.place }, (err, place) => {
