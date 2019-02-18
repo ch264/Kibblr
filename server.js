@@ -40,7 +40,8 @@ app.get('/api', (req, res) => {
           {method: "GET", path: "/api/user/:id", description: "View one specific user."},
           {method: "POST", path: "/api/user", description: "Add a user."},
           {method: "PUT", path: "/api/user/:id", description: "Edit a user."},
-          {method: "DELETE", path: "/api/user/:id", description: "Delete a user."}
+          {method: "DELETE", path: "/api/user/:id", description: "Delete a user."},
+          {method: "GET", path: "/api/search", description: "Search for a place."}
         ]
       })
 })
@@ -157,6 +158,71 @@ app.delete('/api/place/:id', (req, res) => {
   .exec((err, deletedPlace) => {
     if (err) return console.log(err);
     res.json(deletedPlace);
+  });
+});
+
+app.get('/api/search', (req, res) => {
+  console.log("You've tried searching for a place.")
+  let searchTerm = req.query.place;
+  console.log('searchTerm');
+  db.Place.find({"name": {"$regex":searchTerm}})
+  .exec((err, searchedPlaces) => {
+    if(err) return console.log(err);
+    console.log(searchedPlaces);
+    res.json(searchedPlaces);
+  })
+})
+
+// show all review
+//////////////////
+// Reviews Routes
+//////////////////
+
+//find all reviews
+app.get('/api/review', (req, res) => {
+  db.Review.find({}, (err, foundReviews) => {
+    if (err) return console.log(err);
+    res.json(foundReviews);
+  });
+});
+
+//find one review
+app.get('/api/review/:id', (req, res) => {
+  db.Review.findOne({_id: req.params.id}, (err, foundReview) => {
+    res.json(foundReview);
+  });
+});
+
+//create a review
+app.post('/api/review', (req, res) => {
+  let Review = new db.Review({
+    date: req.body.date,
+    rating: req.body.rating,
+    text: req.body.text
+  });
+
+  db.Review.create(Review, (err, reviewCreated) => {
+    if (err) {throw err}
+    res.json(reviewCreated);
+  });
+});
+
+app.put('/api/review/:id', (req, res) => {
+  let reviewId = req.params.id;
+  console.log(reviewId);
+  db.Review.findOneAndUpdate({ _id: reviewId }, req.body, (err, updatedReview) => {
+    if (err) return console.log(err);
+    console.log(updatedReview);
+    res.json(updatedReview);
+  });
+});
+
+app.delete('/api/review/:id', (req, res) => {
+  let reviewId = req.params.id;
+  db.Review.findOneAndRemove({ _id: reviewId})
+  .exec((err, deletedReview) => {
+    if (err) return console.log(err);
+    res.json(deletedReview);
   });
 });
 
