@@ -40,7 +40,8 @@ app.get('/api', (req, res) => {
           {method: "GET", path: "/api/user/:id", description: "View one specific user."},
           {method: "POST", path: "/api/user", description: "Add a user."},
           {method: "PUT", path: "/api/user/:id", description: "Edit a user."},
-          {method: "DELETE", path: "/api/user/:id", description: "Delete a user."}
+          {method: "DELETE", path: "/api/user/:id", description: "Delete a user."},
+          {method: "GET", path: "/api/search", description: "Search for a place."}
         ]
       })
 })
@@ -159,6 +160,18 @@ app.delete('/api/place/:id', (req, res) => {
     res.json(deletedPlace);
   });
 });
+
+app.get('/api/search', (req, res) => {
+  console.log("You've tried searching for a place.")
+  let searchTerm = req.query.place;
+  console.log('searchTerm');
+  db.Place.find({"name": {"$regex":searchTerm}})
+  .exec((err, searchedPlaces) => {
+    if(err) return console.log(err);
+    console.log(searchedPlaces);
+    res.json(searchedPlaces);
+  })
+})
 
 // show all review
 //////////////////
