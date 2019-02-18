@@ -38,33 +38,35 @@
         <div class="container-fluid ">
             <div class="row h-100 ">
                 <div class="col-3">
-
                 </div>
+
                 <div class="col-6 align-items-center">
-                    <form>
+                    <form id="findPlace" method="GET" action="api/review" class="form-inline">
                         <div class="form-group">
                             <label for="formGroupExampleInput">
                                 <!-- text--> </label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Find restaurants, stores and more!">
+                            <input type="text" name="PlaceId" class="form-control" id="formGroupExampleInput" placeholder="Find restaurants, stores and more!">
                         </div>
-                        <div>
-                            <ul class="navbar-nav ml-auto  ">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="restaurantList.html">Restaraunt</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Parks</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Stores</a>
-                                </li>
-                            </ul>
-                        </div>
-                </div>
-                <div class="col-3">
+                    </form>
+                    <div class="row"></div>
+                    <ul class="navbar-nav ml-auto categories  ">
+                        <li class="nav-item">
+                            <a class="nav-link" href="restaurantList.html">Restaraunt</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Parks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Stores</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
+        <div class="col-3">
+        </div>
+    </div>
+    </div>
     </div>
     <!-- Restaraunts Display Section -->
     <div class="container-fluid">
@@ -110,7 +112,7 @@
         <div class="row">
             <div class="col-12">
                 <footer>
-            <p>© 2019 TCB</p>
+                    <p>© 2019 TCB</p>
                 </footer>
             </div>
         </div>

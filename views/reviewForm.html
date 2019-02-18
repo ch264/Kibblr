@@ -11,66 +11,91 @@
 </head>
 
 <body>
-      <!-- Header and Nav Bar -->
-      <div>
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand navbar-fixed-top navbar-light bg-light">
-                    <a class="navbar-brand" href="#">
-                        <img src="" width="30" height="30" class="d-inline-block align-top" alt=""> Logo
-                    </a>
-                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    <div class="collapse navbar-collapse " id="navbarNav">
-                        <ul class="navbar-nav ml-auto ">
-    
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.html">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="signup.html">Sign Up </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            <div class="container-fluid">
-                 
-                    <div class="row">
-                            <div class="col-12">
-                                <h3>Restaraunt Name</h3>
-                        </div>
-                    </div>
-<div class="row">
-    <div class="col-4">
-        <p>Rating</p>
-        <p>Username</p>
-    </div>
-    <div class="col-8">
-    </div>
-    <div class="row">
+    <!-- Header and Nav Bar -->
+    <div>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand navbar-fixed-top navbar-light bg-light">
+                <a class="navbar-brand" href="#">
+                    <img src="" width="30" height="30" class="d-inline-block align-top" alt=""> Logo
+                </a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarNav">
+                    <ul class="navbar-nav ml-auto ">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="signup.html">Sign Up </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container-fluid">
             <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6"><p> iwdhuwdhuehduhfuehf</p></div>
-                    <div class="col-md-3"></div>
-
-
+                <div class="col-4">
                 </div>
 
+                <div class="col-4">
+
+                    <div class="row">
+                        <form id="newReview" method="POST" action="api/review" class="form-inline">
+                            <div class="form-group">
+                                <label for "restaurant">Restaurant Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="Restaurant">
+                            </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label for "rating">Rating</label>
+                            <input type="text" class="form-control" name="rating" placeholder="Rating">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label for "username">Username</label>
+                            <input type="text" class="form-control" name="name" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for "review">Your Review </label>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+
+                            <textarea rows="6" cols="30" name="review" form="usrform" placeholder="Enter review here">
+                                        </textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button type="submit" class="btn btn-light">Create Review </button>
+                    </div>
+                </div>
+                <div class="col-4">
+                </div>
+            </div>
+        </div>
+
         <!-- Footer -->
-    <div class="container-fluid">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <footer>
-                <p>© 2019 TCB</p>
+                        <p>© 2019 TCB</p>
                     </footer>
                 </div>
             </div>
         </div>
-            <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-            <script src="../public/scripts/app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="../public/scripts/app.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="../public/scripts/app.js"></script>
+
 </body>
 
 </html>
