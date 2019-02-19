@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand navbar-fixed-top navbar-light bg-light">
                 <a class="navbar-brand" href="">
-                    <img src="" width="30" height="30" class="d-inline-block align-top" alt=""> Logo
+                    <img src="" width="30" height="30" class="d-inline-block align-top" alt="">Kibblr
                 </a>
                 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -41,17 +41,17 @@
                 </div>
 
                 <div class="col-6 align-items-center">
-                    <form id="findPlace" method="GET" action="api/review" class="form-inline">
+                    <form id="findPlace" method="GET" action="/api/search" class="form-inline">
                         <div class="form-group">
                             <label for="formGroupExampleInput">
                                 <!-- text--> </label>
-                            <input type="text" name="PlaceId" class="form-control" id="formGroupExampleInput" placeholder="Find restaurants, stores and more!">
+                            <input type="text" name="name" class="form-control" id="searchTerm" placeholder="Find restaurants, stores and more!">
                         </div>
                     </form>
                     <div class="row"></div>
                     <ul class="navbar-nav ml-auto categories  ">
                         <li class="nav-item">
-                            <a class="nav-link" href="http://localhost:3000/restaurantList.html">Restaraunt</a>
+                            <a class="nav-link" href="http://localhost:3000/restaurantList.html">Restaurant</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Parks</a>
