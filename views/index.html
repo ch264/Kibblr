@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kibblr</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
@@ -16,6 +17,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand navbar-fixed-top navbar-light bg-light">
                 <a class="navbar-brand" href="">
+
                     <img src="" width="30" height="30" class="d-inline-block align-top" alt="">Kibblr
                 </a>
                 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,78 +37,84 @@
             </nav>
         </div>
         <!-- Search Bar and Categories Links -->
-        <div class="container-fluid ">
-            <div class="row h-100 ">
-                <div class="col-3">
-                </div>
+        <section class="mainSearch">
+            <div class="container-fluid ">
+                <div class="row ">
 
-                <div class="col-6 align-items-center">
-                    <form id="findPlace" method="GET" action="/api/search" class="form-inline">
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">
-                                <!-- text--> </label>
-                            <input type="text" name="name" class="form-control" id="searchTerm" placeholder="Find restaurants, stores and more!">
+                    <div class="col-3">
+                    </div>
+
+                    <div class="col-6  ">
+                        <h2>Hello</h2>
+                        <form id="findPlace" method="GET" action="/api/search" class="form-inline">
+                            <div class="form-group ">
+
+                                <input type="text" name="name" class="form-control" id="searchTerm" placeholder="Find restaurants, stores and more!">
+                            </div>
+                        </form>
+                        <div class="row">
+                            <ul class="navbar-nav categories  ">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="http://localhost:3000/restaurantList.html">Restaurant</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Parks</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Stores</a>
+                                </li>
+                            </ul>
                         </div>
-                    </form>
-                    <div class="row"></div>
-                    <ul class="navbar-nav ml-auto categories  ">
-                        <li class="nav-item">
-                            <a class="nav-link" href="http://localhost:3000/restaurantList.html">Restaurant</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Parks</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Stores</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-        </div>
-    </div>
-    </div>
-    </div>
-    <!-- Restaraunts Display Section -->
-    <div class="container-fluid">
-        <div class="row">
-            <h3>San Francisco</h3>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <a href="restaurantOne.html"> <img class="card-img-top object-fit-cover" src="../images/UniversalCafe.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <h5 class="card-title">Universal Cafe </h5>
-                        <p class="card-text">2814 19th St San Francisco, CA 94110 b/t Florida St & Bryant St Mission
-                        </p>
-                        <p class="card-text">🐾🐾🐾🐾</p>
+                    </div>
+
+
+                    <div class="col-3">
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <a href="restaurantTwo.html"><img class="card-img-top object-fit-cover" src="../images/barebottle.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barebottle Brewing Company</h5>
-                        <p class="card-text">1525 Cortland Ave San Francisco, CA 94110 b/t Bradford St & Peralta Ave Bernal Heights</p>
-                        <p class="card-text">🐾🐾🐾🐾🐾</p>
+    </div>
+    </section>
+    <!-- Restaurants Display Section -->
+    <section class="restDisplay">
+        <div class="container-fluid">
+            <div class="row">
+                <h3>San Francisco, CA.</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <a href="restaurantOne.html"> <img class="card-img-top object-fit-cover" src="../images/UniversalCafe.jpg" alt="Card image cap"></a>
+                        <div class="card-body">
+                            <h5 class="card-title">Universal Cafe </h5>
+                            <p class="card-text">2814 19th St San Francisco, CA 94110 b/t Florida St & Bryant St Mission
+                            </p>
+                            <p class="card-text">🐾🐾🐾🐾</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <a href="restaurantThree.html"><img class="card-img-top object-fit-cover" src="../images/hops.jpg" alt="Card image cap"></a>
-                    <div class="card-body">
-                        <h5 class="card-title">Hops & Hominy</h5>
-                        <p class="card-text">1 Tillman Pl San Francisco, CA 94108 at Grant Ave Union Square, Financial District</p>
-                        <p class="card-text">🐾🐾🐾🐾</p>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <a href="restaurantTwo.html"><img class="card-img-top object-fit-cover" src="../images/barebottle.jpg" alt="Card image cap"></a>
+                        <div class="card-body">
+                            <h5 class="card-title">Barebottle Brewing Company</h5>
+                            <p class="card-text">1525 Cortland Ave San Francisco, CA 94110 b/t Bradford St & Peralta Ave Bernal Heights</p>
+                            <p class="card-text">🐾🐾🐾🐾🐾</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <a href="restaurantThree.html"><img class="card-img-top object-fit-cover" src="../images/hops.jpg" alt="Card image cap"></a>
+                        <div class="card-body">
+                            <h5 class="card-title">Hops & Hominy</h5>
+                            <p class="card-text">1 Tillman Pl San Francisco, CA 94108 at Grant Ave Union Square, Financial District</p>
+                            <p class="card-text">🐾🐾🐾🐾</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Footer -->
     <div class="container-fluid">
         <div class="row">
