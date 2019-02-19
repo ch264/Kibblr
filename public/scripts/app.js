@@ -2,7 +2,30 @@
 $(function() {
     console.log("ready!");
 
+    $('#findPlace').click(function(e) {
+        e.preventDefault();
+        let search = $('#searchTerm').val();
+        console.log(search);
+        $.ajax({
+            method: 'GET',
+            url: `/api/search?place=${search}`,
+            success: successSearch,
+            error: errorSearch
+        });
+    });
 
+
+    function successSearch(response) {
+        console.log(response);
+
+
+
+    }
+
+
+    function errorSearch(e) {
+        console.log("Search not found");
+    }
 
 
     // $('.clickReview').on('submit', function(e) {
