@@ -15,16 +15,29 @@ $(function() {
     });
 
 
-    function successSearch(response) {
-        console.log(response);
-        let placeLink = response[0].url;
-        let placeName = response[0].name;
-        console.log(placeName);
-        console.log(placeLink);
-        $('.searchedPlaces').append(
-            `<a href=${placeLink}>${placeName}</a>`
+    // function successSearch(response) {
+    //     console.log(response);
+    //     let placeLink = response[0].url;
+    //     let placeName = response[0].name;
+    //     console.log(placeName);
+    //     console.log(placeLink);
+    //     $('.searchedPlaces').append(
+    //         `<a href=${placeLink}>${placeName}</a>`
 
-        )
+    //     )
+    // }
+
+    function successSearch(response) {
+        response.forEach(function(element) {
+            let placeLink = element.url;
+            let placeName = element.name;
+            console.log(placeName);
+            console.log(placeLink);
+            $('.searchedPlaces').append(
+                `<a href=${placeLink}>${placeName}</a>`
+
+            )
+        })
     }
 
 
