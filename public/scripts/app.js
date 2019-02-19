@@ -14,20 +14,8 @@ $(function() {
         });
     });
 
-
-    // function successSearch(response) {
-    //     console.log(response);
-    //     let placeLink = response[0].url;
-    //     let placeName = response[0].name;
-    //     console.log(placeName);
-    //     console.log(placeLink);
-    //     $('.searchedPlaces').append(
-    //         `<a href=${placeLink}>${placeName}</a>`
-
-    //     )
-    // }
-
     function successSearch(response) {
+        clearSearchItems();
         response.forEach(function(element) {
             let placeLink = element.url;
             let placeName = element.name;
@@ -40,35 +28,16 @@ $(function() {
         })
     }
 
-
     function errorSearch(e) {
         console.log("Search not found");
     }
 
+    function clearSearchItems() {
+        $(`.searchedPlaces`).empty();
+    };
 
-    // $('.clickReview').on('submit', function(e) {
-    //     e.preventDefault();
 
-    // Review Form 
-    //     $.ajax({
-    //         method: 'POST',
-    //         url: 'api/review',
-    //         success: reviewSuccess,
-    //         error: reviewError
-    //     });
-    // });
 
-    // function reviewSuccess(response) {
-    //     console.log(response);
-    //     var reviewInfo = response.Review;
-    //     var listReview = `<li>
-    // <h2>${Review.place}</h2>
-    // <p>${Review.rating}</p>
-    // <p>${Review.username}</p>
-    // <p>${Review.text}</p>
-    // </h2></li>`
-    //     $('#Review').append(listReview)
-    // };
 
 
 
