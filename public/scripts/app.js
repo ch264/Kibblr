@@ -3,6 +3,24 @@ $(function() {
     console.log("ready!");
 
 
+    $('#findPlace').click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            method: 'GET',
+            url: '/api/search',
+            success: successSearch,
+            error: errorSearch
+        });
+    });
+
+    function successSearch() {
+        let search = $('#findPlace').val();
+        console.log(search);
+    }
+    function errorSearch(e) {
+        console.log("Search not found");
+    }
+
 
 
     // $('.clickReview').on('submit', function(e) {

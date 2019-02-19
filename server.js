@@ -22,25 +22,6 @@ app.use(express.static('public'));
 
 //
 app.get('/api', (req, res) => {
-<<<<<<< HEAD
-  res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true,
-    message: "Welcome to the Kibblr API! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express-personal-api/README.md",
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com",
-    endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about the user"},
-      {method: "GET", path: "/api/place", description: "Show all place reviews"},
-      {method: "GET", path: "/api/place/:id", description: "Show a specific place"},
-      {method: "GET", path: "/api/review", description: "Show all reviews"},
-      {method: "GET", path: "/api/review/:id", description: "Show a specific review"},
-      {method: "DELETE", path: "/api/review/:id", description: "Will delete a specific review."},
-      {method: "POST", path: "/api/review", description: "Add a new review"},
-      {method: "PUT", path: "/api/review", description: "Edit a review."}
-    ]
-  })
-=======
     res.json({
         woopsIForgotToDocumentAllMyEndpoints: true,
         message: "Welcome to the Kibblr API! Here's what you need to know!",
@@ -63,7 +44,6 @@ app.get('/api', (req, res) => {
             { method: "GET", path: "/api/search", description: "Search for a place." }
         ]
     })
->>>>>>> 02038181cbfc71bc3f7ac536a0fd532b47837223
 })
 
 // view all user
@@ -84,11 +64,7 @@ app.get('/api/book/:id', (req, res) => {
 
 // define a root route: localhost:3000/
 app.get('/', (req, res) => {
-<<<<<<< HEAD
-  res.sendFile('views/index.html', {root : __dirname});
-=======
     res.sendFile('views/index.html', { root: __dirname });
->>>>>>> 02038181cbfc71bc3f7ac536a0fd532b47837223
 });
 
 //find all users
@@ -101,17 +77,11 @@ app.get('/api/user', (req, res) => {
 
 //find one user
 app.get('/api/user/:id', (req, res) => {
-<<<<<<< HEAD
-  db.User.findOne({_id: req.params.id}, (err, foundUser) => {
-    res.json(foundUser);
-  });
-=======
     db.User.findOne({
         _id: req.params.id
     }, (err, foundUser) => {
         res.json(foundUser);
     });
->>>>>>> 02038181cbfc71bc3f7ac536a0fd532b47837223
 });
 
 //create a user

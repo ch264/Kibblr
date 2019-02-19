@@ -63,35 +63,35 @@ let places_list = [{
     }
 ];
 
-<<<<<<< HEAD
-db.Review.remove({}, (err, reviews) => {
-    db.Review.create(reviews_list, function(err, reviews){
-        if (err){
-            return console.log("Error:", err);
-    }
-    console.log(`Created new review: ${reviews.text}`);
-    process.exit();
-    });
-});
+//  HEAD
+// db.Review.remove({}, (err, reviews) => {
+//     db.Review.create(reviews_list, function(err, reviews){
+//         if (err){
+//             return console.log("Error:", err);
+//     }
+//     console.log(`Created new review: ${reviews.text}`);
+//     process.exit();
+//     });
+// });
 
-db.User.remove({}, (err, users) => {
-    db.User.create(users_list, function(err, users){
-        if (err){
-            return console.log("Error:", err);
-    }
-    console.log(`Created new user ${users.username}`);
-    process.exit();
-    });
-});
+// db.User.remove({}, (err, users) => {
+//     db.User.create(users_list, function(err, users){
+//         if (err){
+//             return console.log("Error:", err);
+//     }
+//     console.log(`Created new user ${users.username}`);
+//     process.exit();
+//     });
+// });
 
-db.Place.remove({}, (err, places) => {
-    db.Place.create(places_list, function(err, places){
-        if (err){
-            return console.log("Error:", err);
-    }
-    console.log(`Created new place: ${places.text}`);
-    process.exit();
-=======
+// db.Place.remove({}, (err, places) => {
+//     db.Place.create(places_list, function(err, places){
+//         if (err){
+//             return console.log("Error:", err);
+//     }
+//     console.log(`Created new place: ${places.text}`);
+//     process.exit();
+// =======
 // db.Review.remove({}, (err, reviews) => {
 //     db.Review.create(reviews_list, function(err, reviews){
 //     if (err){
@@ -169,6 +169,5 @@ db.Review.deleteMany({}, function(err, reviews) {
             }
             console.log('saved ' + savedReview.date + ' by ' + savedReview.text);
         });
->>>>>>> 02038181cbfc71bc3f7ac536a0fd532b47837223
     });
 });
