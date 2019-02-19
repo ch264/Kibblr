@@ -5,7 +5,7 @@ $(function() {
     $('#findPlace').click(function(e) {
         e.preventDefault();
         let search = $('#searchTerm').val();
-        console.log(search);
+
         $.ajax({
             method: 'GET',
             url: `/api/search?place=${search}`,
@@ -17,9 +17,6 @@ $(function() {
 
     function successSearch(response) {
         console.log(response);
-
-
-
     }
 
 

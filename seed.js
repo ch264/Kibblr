@@ -48,14 +48,14 @@ let places_list = [{
         type: "restaurant",
         address: "1 Tillman Pl, San Francisco, CA 94108",
         rating: 2,
-        url: '../public/restaurantThree.html'
+        url: "../public/restaurantThree.html"
     },
     {
         name: "Universal Cafe",
         type: "restaurant",
         address: "2814 19th St San Francisco, CA 94110",
         rating: 4,
-        url: '../public/restaurantOne.html'
+        url: "../public/restaurantOne.html"
     },
     {
         name: "Universal Restaurant",
@@ -102,7 +102,8 @@ db.Place.deleteMany({}, function(err, places) {
             type: placeData.type,
             review: placeData.review,
             address: placeData.address,
-            rating: placeData.rating
+            rating: placeData.rating,
+            url: placeData.url
         });
 
         place.save(function(err, savedPlace) {
