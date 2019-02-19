@@ -1,13 +1,15 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Review = require('./review');
 
-    var UserSchema = new Schema ({
-        name: String,
-        email: String,
-        password: String,
-        username: String
-    });
+const UserSchema = new Schema({
+    name: String,
+    email: String,
+    password: String,
+    username: String,
+    Review: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
+});
 
-    var User = mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema);
 
-    module.exports = User;
+module.exports = User;
