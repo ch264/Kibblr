@@ -2,7 +2,28 @@
 $(function() {
     console.log("ready!");
 
+    $('#findPlace').click(function(e) {
+        e.preventDefault();
+        let search = $('#searchTerm').val();
+        console.log(search);
+        $.ajax({
+            method: 'GET',
+            url: `/api/search?place=${search}`,
+            success: successSearch,
+            error: errorSearch
+        });
+    });
 
+
+    function successSearch(response) {
+        console.log(response);
+
+
+
+    }
+
+
+<<<<<<< HEAD
     $('#findPlace').click(function(e) {
         e.preventDefault();
         $.ajax({
@@ -21,6 +42,11 @@ $(function() {
         console.log("Search not found");
     }
 
+=======
+    function errorSearch(e) {
+        console.log("Search not found");
+    }
+>>>>>>> master
 
 
     // $('.clickReview').on('submit', function(e) {

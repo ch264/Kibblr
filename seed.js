@@ -47,19 +47,29 @@ let places_list = [{
         name: "Hops And Hominy",
         type: "restaurant",
         address: "1 Tillman Pl, San Francisco, CA 94108",
-        rating: 2
+        rating: 2,
+        url: '../public/restaurantThree.html'
     },
     {
         name: "Universal Cafe",
         type: "restaurant",
         address: "2814 19th St San Francisco, CA 94110",
-        rating: 4
+        rating: 4,
+        url: '../public/restaurantOne.html'
+    },
+    {
+        name: "Universal Restaurant",
+        type: "restaurant",
+        address: "0101 Public Street San Francisco, CA 94110",
+        rating: 4,
+        url: '../public/restaurantOne.html'
     },
     {
         name: "Barebottle Brewing Company",
         type: "restaurant",
         address: "1525 Cortland Ave San Francisco, CA 94110",
-        rating: 5
+        rating: 5,
+        url: '../public/restaurantTwo.html'
     }
 ];
 

@@ -7,7 +7,8 @@ let PlaceSchema = new Schema({
     type: String,
     review: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
     address: String,
-    rating: Number
+    rating: Number,
+    url: String
 })
 
 var Place = mongoose.model('Place', PlaceSchema);
