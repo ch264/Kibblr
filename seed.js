@@ -55,21 +55,21 @@ let places_list = [{
         type: "restaurant",
         address: "2814 19th St San Francisco, CA 94110",
         rating: 4,
-        url: "../public/restaurantOne.html"
+        url: "../restaurantOne.html"
     },
     {
         name: "Universal Restaurant",
         type: "restaurant",
         address: "0101 Public Street San Francisco, CA 94110",
         rating: 4,
-        url: '../public/restaurantOne.html'
+        url: '../restaurantOne.html'
     },
     {
         name: "Barebottle Brewing Company",
         type: "restaurant",
         address: "1525 Cortland Ave San Francisco, CA 94110",
         rating: 5,
-        url: '../public/restaurantTwo.html'
+        url: '../restaurantTwo.html'
     }
 ];
 

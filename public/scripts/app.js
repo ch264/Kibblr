@@ -2,7 +2,7 @@
 $(function() {
     console.log("ready!");
 
-    $('#findPlace').click(function(e) {
+    $('#findPlace').submit(function(e) {
         e.preventDefault();
         let search = $('#searchTerm').val();
 
@@ -17,6 +17,14 @@ $(function() {
 
     function successSearch(response) {
         console.log(response);
+        let placeLink = response[0].url;
+        let placeName = response[0].name;
+        console.log(placeName);
+        console.log(placeLink);
+        $('.searchedPlaces').append(
+            `<a href=${placeLink}>${placeName}</a>`
+
+        )
     }
 
 
