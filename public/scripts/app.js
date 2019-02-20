@@ -23,7 +23,6 @@ $(function() {
             console.log(placeLink);
             $('.searchedPlaces').append(
                 `<li><a href=${placeLink}>${placeName}</a></li>`
-
             )
         })
     }
@@ -38,30 +37,30 @@ $(function() {
 
 
     //Review Form API
-    $('.review').click(function(e) {
-        e.preventDefault();
-        var restaurantPage = document.getElementsByTagName('h2')[0].innerText;
+    // $('.review').click(function(e) {
+    //     e.preventDefault();
+    //     var restaurantPage = document.getElementsByTagName('h2')[0].innerText;
 
-        console.log(restaurantPage);
+    //     console.log(restaurantPage);
 
-        $.ajax({
-            method: 'GET',
-            url: `/api/search?place=${restaurantPage}`,
-            success: successWrite,
-            error: errorWrite
-        });
-    })
+    //     $.ajax({
+    //         method: 'GET',
+    //         url: `/api/search?place=${restaurantPage}`,
+    //         success: successWrite,
+    //         error: errorWrite
+    //     });
+    // })
 
-    function successWrite(pizza) {
+    // function successWrite(pizza) {
 
-        console.log(pizza);
-        let name = pizza[0].name;
-        $('.append-id').append(name);
-    }
+    //     console.log(pizza);
+    //     let name = pizza[0].name;
+    //     $('.append-id').append(name);
+    // }
 
-    function errorWrite(e) {
-        console.log("Place not found");
-    }
+    // function errorWrite(e) {
+    //     console.log("Place not found");
+    // }
 
     //Clicking on header leads to main page
     $('.navbar-brand').click(function(e) {
@@ -69,16 +68,47 @@ $(function() {
         window.location.href = "/";
     });
     // Clicking on review button leads to review page
-    $('.review').click(function(e) {
-        e.preventDefault();
-        window.location.href = "http://localhost:3000/reviewForm.html";
-    });
+    // $('.review').click(function(e) {
+    //     e.preventDefault();
+    //     window.location.href = "http://localhost:3000/reviewForm.html";
+    // });
 
-    $('#form').hide();
     // create reviewform on click 
+    $('#form').hide();
     $('.createReviewButton').on('click', function () {
         $('#form').slideToggle();
+        
+    });
+
+    $('.clickReview').on('click', function (e) {
+        e.preventDefault();
+        console.log($('#review').serialize());
+    
+        $.ajax({
+            method: 'POST',
+            url: '/api/review',
+            data: $('#review').serialize(),
+            success: newReviewSuccess,
+            error: newReviewError
+        });
     });
     
+    function newReviewSuccess(json) {
+        console.log(json);
+        let yourNewReview = $('#form input').val('');
+        // pushes json into review
+        yourNewReview.push(json);
+        // render();
+        console.log("the review worked");
+    }
+
+    function newReviewError(error) {
+        console.log(error);
+        console.log("error on new review creation")
+    }
+
+    // function render() {
+    //     $('.reviewOne').append(YourNewReview);
+    // }
 
 });

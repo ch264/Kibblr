@@ -9,7 +9,7 @@ const db = require('./models');
 //add bodyparser
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 app.use(function(req, res, next) {
@@ -211,15 +211,15 @@ app.get('/api/review/:id', (req, res) => {
 
 //create a review
 app.post('/api/review', (req, res) => {
-    let Review = new db.Review({
-        date: req.body.date,
-        username: req.body.username,
-        rating: req.body.rating,
-        text: req.body.text,
-        place: req.body.place
-    });
-    
-    db.Review.create(Review, (err, reviewCreated) => {
+    // let Review = new db.Review({
+    //     date: req.body.date,
+    //     username: req.body.username,
+    //     rating: req.body.rating,
+    //     text: req.body.text,
+    //     place: req.body.place
+    // });
+    console.log(req.body);
+    db.Review.create(req.body, (err, reviewCreated) => {
         if (err) { throw err }
         res.json(reviewCreated);
         console.log("You have created a review!");
