@@ -2,10 +2,10 @@
 $(function() {
     console.log("ready!");
 
-    $('#findPlace').click(function(e) {
+    $('#findPlace').submit(function(e) {
         e.preventDefault();
         let search = $('#searchTerm').val();
-        console.log(search);
+
         $.ajax({
             method: 'GET',
             url: `/api/search?place=${search}`,
@@ -14,43 +14,30 @@ $(function() {
         });
     });
 
-
     function successSearch(response) {
-        console.log(response);
+        clearSearchItems();
+        response.forEach(function(element) {
+            let placeLink = element.url;
+            let placeName = element.name;
+            console.log(placeName);
+            console.log(placeLink);
+            $('.searchedPlaces').append(
+                `<a href=${placeLink}>${placeName}</a>`
 
-
-
+            )
+        })
     }
-
 
     function errorSearch(e) {
         console.log("Search not found");
     }
 
+    function clearSearchItems() {
+        $(`.searchedPlaces`).empty();
+    };
 
-    // $('.clickReview').on('submit', function(e) {
-    //     e.preventDefault();
 
-    // Review Form 
-    //     $.ajax({
-    //         method: 'POST',
-    //         url: 'api/review',
-    //         success: reviewSuccess,
-    //         error: reviewError
-    //     });
-    // });
 
-    // function reviewSuccess(response) {
-    //     console.log(response);
-    //     var reviewInfo = response.Review;
-    //     var listReview = `<li>
-    // <h2>${Review.place}</h2>
-    // <p>${Review.rating}</p>
-    // <p>${Review.username}</p>
-    // <p>${Review.text}</p>
-    // </h2></li>`
-    //     $('#Review').append(listReview)
-    // };
 
 
 
