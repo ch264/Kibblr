@@ -23,30 +23,9 @@ $(function() {
     }
 
 
-<<<<<<< HEAD
-    $('#findPlace').click(function(e) {
-        e.preventDefault();
-        $.ajax({
-            method: 'GET',
-            url: '/api/search',
-            success: successSearch,
-            error: errorSearch
-        });
-    });
-
-    function successSearch() {
-        let search = $('#findPlace').val();
-        console.log(search);
-    }
     function errorSearch(e) {
         console.log("Search not found");
     }
-
-=======
-    function errorSearch(e) {
-        console.log("Search not found");
-    }
->>>>>>> master
 
 
     // $('.clickReview').on('submit', function(e) {
