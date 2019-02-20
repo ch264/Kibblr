@@ -41,22 +41,38 @@ $(function() {
     $('.review').click(function(e) {
         e.preventDefault();
         var restaurantPage = document.getElementsByTagName('h2')[0].innerText;
+
         console.log(restaurantPage);
+
+        $.ajax({
+            method: 'GET',
+            url: `/api/search?place=${restaurantPage}`,
+            success: successWrite,
+            error: errorWrite
+        });
     })
 
+    function successWrite(pizza) {
 
+        console.log(pizza);
+        let name = pizza[0].name;
+        $('.append-id').append(name);
+    }
 
+    function errorWrite(e) {
+        console.log("Place not found");
+    }
 
     //Clicking on header leads to main page
     $('.navbar-brand').click(function(e) {
         e.preventDefault();
         window.location.href = "/";
     });
-    //Clicking on review button leads to review page
-    // $('.review').click(function(e) {
-    //     e.preventDefault();
-    //     window.location.href = "http://localhost:3000/reviewForm.html";
-    // });
+    // Clicking on review button leads to review page
+    $('.review').click(function(e) {
+        e.preventDefault();
+        window.location.href = "http://localhost:3000/reviewForm.html";
+    });
 
 
 
