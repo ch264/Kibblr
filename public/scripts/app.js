@@ -38,7 +38,11 @@ $(function() {
 
 
     //Review Form API
-
+    $('.review').click(function(e) {
+        e.preventDefault();
+        var restaurantPage = document.getElementsByTagName('h2')[0].innerText;
+        console.log(restaurantPage);
+    })
 
 
 
@@ -49,10 +53,10 @@ $(function() {
         window.location.href = "/";
     });
     //Clicking on review button leads to review page
-    $('.review').click(function(e) {
-        e.preventDefault();
-        window.location.href = "http://localhost:3000/reviewForm.html";
-    });
+    // $('.review').click(function(e) {
+    //     e.preventDefault();
+    //     window.location.href = "http://localhost:3000/reviewForm.html";
+    // });
 
 
 
