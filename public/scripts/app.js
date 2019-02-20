@@ -74,7 +74,11 @@ $(function() {
         window.location.href = "http://localhost:3000/reviewForm.html";
     });
 
-
-
+    $('#form').hide();
+    // create reviewform on click 
+    $('.createReviewButton').on('click', function () {
+        $('#form').slideToggle();
+    });
+    
 
 });

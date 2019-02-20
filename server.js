@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
 
@@ -44,29 +44,33 @@ app.get('/api', (req, res) => {
             { method: "DELETE", path: "/api/user/:id", description: "Delete a user." },
             { method: "GET", path: "/api/search", description: "Search for a place." }
         ]
-    })
-})
-
-// view all user
-app.get('/api/user', (req, res) => {
-  db.User.find({}, (err, foundReview) => {
-    if (err) return console.log(err);
-    res.json(foundReview);
-  });
+    });
 });
 
-// view one review
-app.get('/api/book/:id', (req, res) => {
-  db.Book.findOneAndDelete({_id: req.params.id}, (err, foundBook) => {
-    res.json(foundBook);
-  })
-});
+// // view all user
+// app.get('/api/user', (req, res) => {
+//     db.User.find({}, (err, foundReview) => {
+//         if (err) return console.log(err);
+//         res.json(foundReview);
+//     });
+// });
+
+// // view one review
+// app.get('/api/book/:id', (req, res) => {
+//     db.Book.findOneAndDelete({_id: req.params.id}, (err, foundBook) => {
+//         res.json(foundBook);
+//     })
+// });
 
 
 // define a root route: localhost:3000/
 app.get('/', (req, res) => {
     res.sendFile('views/index.html', { root: __dirname });
 });
+
+//////////////////
+// User Routes
+//////////////////
 
 //find all users
 app.get('/api/user', (req, res) => {
@@ -78,9 +82,7 @@ app.get('/api/user', (req, res) => {
 
 //find one user
 app.get('/api/user/:id', (req, res) => {
-    db.User.findOne({
-        _id: req.params.id
-    }, (err, foundUser) => {
+    db.User.findOne({_id: req.params.id}, (err, foundUser) => {
         res.json(foundUser);
     });
 });
@@ -106,14 +108,10 @@ app.put('/api/user/:id', (req, res) => {
     db.User.findOneAndUpdate({ _id: userId }, req.body, (err, updatedUser) => {
         console.log(updatedUser);
         res.json(updatedUser);
-    })
-})
+    });
+});
 
 app.delete('/api/user/:id', (req, res) => {
-    // let userId = req.params.id;
-    // db.User.findOneAndRemove({_id: userId }), (err, deletedUser) => {
-    //   res.json(deletedUser);
-    // }
     let userId = req.params.id;
     db.User.findOneAndRemove({ _id: userId })
         .exec((err, deletedUser) => {
@@ -122,7 +120,7 @@ app.delete('/api/user/:id', (req, res) => {
         });
 });
 
-// show all places
+
 //////////////////
 // Places Routes
 //////////////////
@@ -168,6 +166,7 @@ app.put('/api/place/:id', (req, res) => {
         res.json(updatedPlace);
     });
 });
+
 // Delete a place
 app.delete('/api/place/:id', (req, res) => {
     let placeId = req.params.id;
@@ -187,10 +186,10 @@ app.get('/api/search', (req, res) => {
             if (err) return console.log(err);
             console.log(searchedPlaces);
             res.json(searchedPlaces);
-        })
-})
+        });
+});
 
-// show all review
+
 //////////////////
 // Reviews Routes
 //////////////////
@@ -219,19 +218,12 @@ app.post('/api/review', (req, res) => {
         text: req.body.text,
         place: req.body.place
     });
-    //find the place from the req.body
-    // db.Place.findOne({ place: req.body.place }, (err, place) => {
-    //     if (err) {
-    //         return console.log(err);
-    //     }
-    //  if that place does not exist, create a new one
+    
     db.Review.create(Review, (err, reviewCreated) => {
         if (err) { throw err }
         res.json(reviewCreated);
         console.log("You have created a review!");
-
     });
-    // });
 });
 
 app.put('/api/review/:id', (req, res) => {
@@ -259,57 +251,52 @@ app.delete('/api/review/:id', (req, res) => {
 
 //find all place
 app.get('/api/place', (req, res) => {
-  db.Place.find({}, (err, foundPlaces) => {
-    if (err) return console.log(err);
-    res.json(foundPlaces);
-  });
+    db.Place.find({}, (err, foundPlaces) => {
+        if (err) return console.log(err);
+        res.json(foundPlaces);
+    });
 });
 
 //find one place
 app.get('/api/place/:id', (req, res) => {
-  db.Place.findOne({_id: req.params.id}, (err, foundPlace) => {
-    res.json(foundPlace);
-  });
+    db.Place.findOne({_id: req.params.id}, (err, foundPlace) => {
+        res.json(foundPlace);
+    });
 });
 
 //create a place
 app.post('/api/place', (req, res) => {
-  let Place = new db.Place({
-    name: req.body.name,
-    type: req.body.type,
-    review: req.body.review,
-    address: req.body.address,
-    rating: req.body.rating
-  });
+    let Place = new db.Place({
+        name: req.body.name,
+        type: req.body.type,
+        review: req.body.review,
+        address: req.body.address,
+        rating: req.body.rating
+    });
 
-  db.Place.create(Place, (err, placeCreated) => {
-    if (err) {throw err}
-    res.json(placeCreated);
-  });
+    db.Place.create(Place, (err, placeCreated) => {
+        if (err) {throw err}
+        res.json(placeCreated);
+    });
 });
 
 app.put('/api/place/:id', (req, res) => {
-  let placeId = req.params.id;
-  console.log(placeId);
-  db.Place.findOneAndUpdate({ _id: placeId }, req.body, (err, updatedPlace) => {
-    console.log(updatedPlace);
-    res.json(updatedPlace);
-  });
+    let placeId = req.params.id;
+    console.log(placeId);
+    db.Place.findOneAndUpdate({ _id: placeId }, req.body, (err, updatedPlace) => {
+        console.log(updatedPlace);
+        res.json(updatedPlace);
+    });
 });
 
 app.delete('/api/place/:id', (req, res) => {
-  let placeId = req.params.id;
-  db.Place.findOneAndRemove({ _id: placeId})
-  .exec((err, deletedPlace) => {
-    if (err) return console.log(err);
-    res.json(deletedPlace);
-  });
+    let placeId = req.params.id;
+    db.Place.findOneAndRemove({ _id: placeId})
+    .exec((err, deletedPlace) => {
+        if (err) return console.log(err);
+        res.json(deletedPlace);
+    });
 });
-
-////////////////
-//
-////////////////
-
 
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
