@@ -37,6 +37,10 @@
         .restDisplay {
             margin: 3em 0;
         }
+        
+        .searchedPlaces {
+            list-style: none;
+        }
         /* Index.html Gallery Page */
         
         h3 {

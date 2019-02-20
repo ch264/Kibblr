@@ -1,7 +1,7 @@
 //jshint esversion:6
 $(function() {
     console.log("ready!");
-
+    //Search API
     $('#findPlace').submit(function(e) {
         e.preventDefault();
         let search = $('#searchTerm').val();
@@ -22,7 +22,7 @@ $(function() {
             console.log(placeName);
             console.log(placeLink);
             $('.searchedPlaces').append(
-                `<a href=${placeLink}>${placeName}</a>`
+                `<li><a href=${placeLink}>${placeName}</a></li>`
 
             )
         })
@@ -37,6 +37,7 @@ $(function() {
     };
 
 
+    //Review Form API
 
 
 
