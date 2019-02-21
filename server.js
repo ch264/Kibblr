@@ -6,6 +6,9 @@ const app = express();
 //connect to database
 const db = require('./models');
 
+//handlebars
+const handlebars = require('handlebars');
+
 //add bodyparser
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));

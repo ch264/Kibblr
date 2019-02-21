@@ -95,11 +95,11 @@ $(function() {
     
     function newReviewSuccess(json) {
         console.log(json);
-        let yourNewReview = $('#form input').val('');
-        // pushes json into review
-        yourNewReview.push(json);
+        $('.append-id').append(json.rating);
+        console.log($('.append-id'));
         // render();
-        console.log("the review worked");
+        // console.log("the review worked");
+  
     }
 
     function newReviewError(error) {
