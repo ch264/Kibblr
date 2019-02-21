@@ -13,6 +13,7 @@ const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 app.use(function(req, res, next) {
@@ -30,7 +31,7 @@ app.get('/api', (req, res) => {
         woopsIForgotToDocumentAllMyEndpoints: true,
         message: "Welcome to the Kibblr API! Here's what you need to know!",
         documentationUrl: "https://github.com/example-username/express-personal-api/README.md",
-        baseUrl: "http://YOUR-APP-NAME.herokuapp.com",
+        baseUrl: "https://kibblr.herokuapp.com/",
         endpoints: [
             { method: "GET", path: "/api", description: "Describes all available endpoints" },
             { method: "GET", path: "/api/place", description: "Show all place reviews" },

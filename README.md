@@ -6,6 +6,7 @@ Short explanation of the project (1-2 sentences) - what is the goal of the proje
 Kibblr is a yelp like app for users to leave reviews about restaurants, rating them on their dog friendliness
 
 Link to project hosted on Heroku
+https://kibblr.herokuapp.com/
 
 ## Technologies Used 
 What technologies did you use to develop this project? (bullet points)
