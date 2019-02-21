@@ -5,7 +5,6 @@ const Review = require('./review');
 let PlaceSchema = new Schema({
     name: String,
     type: String,
-    review: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
     address: String,
     rating: Number,
     url: String

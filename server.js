@@ -52,8 +52,6 @@ app.get('/api', (req, res) => {
 });
 
 
-
-
 // define a root route: localhost:3000/
 app.get('/', (req, res) => {
     res.sendFile('views/index.html', { root: __dirname });
@@ -128,9 +126,17 @@ app.get('/api/place', (req, res) => {
     });
 });
 
+app.get('/api/place/name/:name', (req, res) => {
+    db.Place.findOne({ name: req.params.name }, (err, foundPlace) => {
+        if (err) { throw err };
+        res.json(foundPlace);
+    });
+});
+
 //find one place
 app.get('/api/place/:id', (req, res) => {
     db.Place.findOne({ _id: req.params.id }, (err, foundPlace) => {
+        if (err) { throw err };
         res.json(foundPlace);
     });
 });
@@ -189,12 +195,15 @@ app.get('/api/search', (req, res) => {
 // Reviews Routes
 //////////////////
 
-//find all reviews
+// find all reviews 
 app.get('/api/review', (req, res) => {
-    db.Review.find({}, (err, foundReviews) => {
-        if (err) return console.log(err);
-        res.json(foundReviews);
-    });
+    db.Review.find({})
+        .populate('username')
+        .populate('place')
+        .exec((err, foundReviews) => {
+            if (err) return console.log(err);
+            res.json(foundReviews);
+        })
 });
 
 //find one review
@@ -204,15 +213,20 @@ app.get('/api/review/:id', (req, res) => {
     });
 });
 
+// find all reviews of one place
+app.get('/api/place/:id/reviews', (req, res) => {
+    db.Review.find({place: req.params.id})
+        .populate('username')
+        .populate('place')
+        .exec((err, foundReviews) => {
+            if (err) return console.log(err);
+            res.json(foundReviews);
+        })
+});
+
+
 //create a review
 app.post('/api/review', (req, res) => {
-    // let Review = new db.Review({
-    //     date: req.body.date,
-    //     username: req.body.username,
-    //     rating: req.body.rating,
-    //     text: req.body.text,
-    //     place: req.body.place
-    // });
     console.log(req.body);
     db.Review.create(req.body, (err, reviewCreated) => {
         if (err) { throw err }

@@ -2,6 +2,33 @@
 $(function() {
     console.log("ready!");
 
+    let placeName = $('.barebottle').text();
+    let placeId='';
+    $.ajax({
+        method: 'GET',
+        url: `/api/place/name/${placeName}`,
+        success: setReviews,
+        error: (err) => console.log(err)
+    });
+
+    function setReviews(place){
+        placeId = place._id;
+
+        $.ajax({
+            method: 'GET',
+            url: `/api/place/${placeId}/reviews`,
+            success: (res) => {
+                console.log(res);
+                res.forEach(review => {
+                    $('.append-id').append(`<li>${review.rating}, ${review.text}</li>`);
+                })
+            },
+            error: (err) => console.log(err)
+        });
+    }
+    
+
+
     //Create A User
     $('.signUpButton').submit(function(e) {
         e.preventDefault();
@@ -21,9 +48,7 @@ $(function() {
 
     function successUser() {
         console.log('User Created');
-
     }
-
     function errorUser() {
         console.log("Could not Create User");
     }
@@ -54,11 +79,9 @@ $(function() {
             );
         });
     }
-
     function errorSearch(e) {
         console.log("Search not found");
     }
-
     function clearSearchItems() {
         $(`.searchedPlaces`).empty();
     }
@@ -74,18 +97,19 @@ $(function() {
     $('#form').hide();
     $('.createReviewButton').on('click', function() {
         $('#form').slideToggle();
-
     });
 
     $('.clickReview').on('click', function(e) {
         e.preventDefault();
         // console.log($('#review').serialize());
-        console.log("clicking");
-
+        
+        let review = $('#review').serialize()+'&'+$.param({ 'place': placeId });
+        // review.place = placeId;
+        console.log(review);
         $.ajax({
             method: 'POST',
             url: '/api/review',
-            data: $('#review').serialize(),
+            data: review,
             success: newReviewSuccess,
             error: newReviewError
         });
@@ -102,6 +126,19 @@ $(function() {
         console.log("error on new review creation");
     }
 
+    // keep new reviews on page after page refresh
+    
+
+    // function reviewRemainSuccess(response) {
+    //     for(let i = 0; i < response.review.length; i++) {
+    //         let newReview = response.review;
+    //         $(".append-id").append(`<li>${newReview}</li>`);
+    //     }
+    // }
+
+    // function reviewRemainError(error) {
+    //     console.log(error);
+    // }
 
     //Bootstrap Sign Up Form Validator
     (function() {
@@ -121,5 +158,8 @@ $(function() {
             });
         }, false);
     })();
+
+
+
 
 });

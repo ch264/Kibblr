@@ -3,9 +3,9 @@ const db = require('./models');
 let reviews_list = [{
         date: 'February 15, 2019',
         rating: 4,
-        username: 'tiffany',
+        username: 'christina',
         text: 'My dog loved this restaurant.',
-        place: 'Universal Cafe'
+        place: 'Barebottle Brewing Company'
     },
     {
         date: 'February 14, 2019',
@@ -74,7 +74,7 @@ let places_list = [{
 ];
 
 db.Place.deleteMany({}, function(err, places) {
-    console.log('removed all places');
+    // console.log('removed all places');
 
     places_list.forEach(function(placeData) {
         var place = new db.Place({
@@ -90,13 +90,13 @@ db.Place.deleteMany({}, function(err, places) {
             if (err) {
                 console.log(err);
             }
-            console.log('saved ' + savedPlace.name + ' by ' + savedPlace.type);
+            // console.log('saved ' + savedPlace.name + ' by ' + savedPlace.type);
         });
     });
 });
 
 db.User.deleteMany({}, function(err, users) {
-    console.log('removed all users');
+    // console.log('removed all users');
 
     users_list.forEach(function(userData) {
         var user = new db.User({
@@ -110,26 +110,51 @@ db.User.deleteMany({}, function(err, users) {
             if (err) {
                 console.log(err);
             }
-            console.log('saved ' + savedUser.name + ' by ' + savedUser.username);
+            // console.log('saved ' + savedUser.name + ' by ' + savedUser.username);
         });
     });
 });
 
-db.Review.deleteMany({}, function(err, reviews) {
-    console.log('removed all reviews');
+db.Review.deleteMany({}, (err, reviews) => {
+    // console.log('removed all reviews');
 
     reviews_list.forEach(function(reviewData) {
-        var review = new db.Review({
-            date: reviewData.date,
-            rating: reviewData.rating,
-            text: reviewData.text
-        });
-
-        review.save(function(err, savedReview) {
+        db.Place.findOne({name: reviewData.place}, (err, foundPlace) => {
+            // console.log(`${reviewData.username}`);
             if (err) {
                 console.log(err);
+                return;
             }
-            console.log('saved ' + savedReview.date + ' by ' + savedReview.text);
-        });
-    });
+            if(foundPlace){
+                db.User.findOne({username: reviewData.username}, (err, foundUser)=>{
+                    if (err) {
+                        console.log(err);
+                        return;
+                    }
+                    if(foundUser){
+                        var review = new db.Review({
+                            date: reviewData.date,
+                            rating: reviewData.rating,
+                            text: reviewData.text,
+                            username: foundUser._id,
+                            place: foundPlace._id
+                        });
+    // console.log(review);
+                        review.save(function(err, savedReview) {
+                            if (err) {
+                                console.log(err);
+                            }
+                            // console.log('saved ' + savedReview.text + ' by ' + savedReview.username);
+                            console.log(savedReview);
+                        });
+                    }
+                    else{
+                        console.log('user is not found');
+                    }
+                })
+            }
+            else
+                console.log('place is not found');
+        });   
+    })
 });
