@@ -103,7 +103,8 @@ $(function() {
         e.preventDefault();
         // console.log($('#review').serialize());
         
-        let review = $('#review').serialize()+'&'+$.param({ 'place': placeId });
+        let review = $('#review').serialize()+'&'+$.param({ 'place': placeId })+'&'+$.param({ 'username': '5c6f21dd6a18cc8bddc86fb1' });
+        
         // review.place = placeId;
         console.log(review);
         $.ajax({
@@ -160,6 +161,18 @@ $(function() {
     })();
 
 
+    $.ajax({
+        method: 'GET',
+        url: `/api/user/${username}/${password}`,
+        success: newLoginSuccess,
+        error: newLoginError
+    });
+    newLoginSuccess = (response) => {
+        localStorage.userId = response._id
+    }
+
+    // localStorage.userId (getting it)
+});
 
 
 });
