@@ -6,10 +6,13 @@ const app = express();
 //connect to database
 const db = require('./models');
 
+//handlebars
+const handlebars = require('handlebars');
+
 //add bodyparser
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 app.use(function(req, res, next) {
@@ -47,20 +50,7 @@ app.get('/api', (req, res) => {
     });
 });
 
-// // view all user
-// app.get('/api/user', (req, res) => {
-//     db.User.find({}, (err, foundReview) => {
-//         if (err) return console.log(err);
-//         res.json(foundReview);
-//     });
-// });
 
-// // view one review
-// app.get('/api/book/:id', (req, res) => {
-//     db.Book.findOneAndDelete({_id: req.params.id}, (err, foundBook) => {
-//         res.json(foundBook);
-//     })
-// });
 
 
 // define a root route: localhost:3000/
@@ -82,7 +72,7 @@ app.get('/api/user', (req, res) => {
 
 //find one user
 app.get('/api/user/:id', (req, res) => {
-    db.User.findOne({_id: req.params.id}, (err, foundUser) => {
+    db.User.findOne({ _id: req.params.id }, (err, foundUser) => {
         res.json(foundUser);
     });
 });
@@ -97,8 +87,8 @@ app.post('/api/user', (req, res) => {
     });
 
     db.User.create(newUser, (err, userCreated) => {
-        if (err) { throw err }
-        res.json(userCreated);
+        if (err) { throw err; }
+        res.redirect('/');
     });
 });
 
@@ -151,7 +141,7 @@ app.post('/api/place', (req, res) => {
     });
 
     db.Place.create(Place, (err, placeCreated) => {
-        if (err) { throw err }
+        if (err) { throw err; }
         res.json(placeCreated);
     });
 });
@@ -178,7 +168,7 @@ app.delete('/api/place/:id', (req, res) => {
 });
 
 app.get('/api/search', (req, res) => {
-    console.log("You've tried searching for a place.")
+    console.log("You've tried searching for a place.");
     let searchTerm = req.query.place;
     console.log('searchTerm');
     db.Place.find({ "name": { "$regex": searchTerm } })
@@ -211,15 +201,15 @@ app.get('/api/review/:id', (req, res) => {
 
 //create a review
 app.post('/api/review', (req, res) => {
-    let Review = new db.Review({
-        date: req.body.date,
-        username: req.body.username,
-        rating: req.body.rating,
-        text: req.body.text,
-        place: req.body.place
-    });
-    
-    db.Review.create(Review, (err, reviewCreated) => {
+    // let Review = new db.Review({
+    //     date: req.body.date,
+    //     username: req.body.username,
+    //     rating: req.body.rating,
+    //     text: req.body.text,
+    //     place: req.body.place
+    // });
+    console.log(req.body);
+    db.Review.create(req.body, (err, reviewCreated) => {
         if (err) { throw err }
         res.json(reviewCreated);
         console.log("You have created a review!");
@@ -259,7 +249,7 @@ app.get('/api/place', (req, res) => {
 
 //find one place
 app.get('/api/place/:id', (req, res) => {
-    db.Place.findOne({_id: req.params.id}, (err, foundPlace) => {
+    db.Place.findOne({ _id: req.params.id }, (err, foundPlace) => {
         res.json(foundPlace);
     });
 });
@@ -275,7 +265,7 @@ app.post('/api/place', (req, res) => {
     });
 
     db.Place.create(Place, (err, placeCreated) => {
-        if (err) {throw err}
+        if (err) { throw err; }
         res.json(placeCreated);
     });
 });
@@ -291,11 +281,11 @@ app.put('/api/place/:id', (req, res) => {
 
 app.delete('/api/place/:id', (req, res) => {
     let placeId = req.params.id;
-    db.Place.findOneAndRemove({ _id: placeId})
-    .exec((err, deletedPlace) => {
-        if (err) return console.log(err);
-        res.json(deletedPlace);
-    });
+    db.Place.findOneAndRemove({ _id: placeId })
+        .exec((err, deletedPlace) => {
+            if (err) return console.log(err);
+            res.json(deletedPlace);
+        });
 });
 
 
