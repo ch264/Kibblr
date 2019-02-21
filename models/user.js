@@ -6,8 +6,7 @@ const UserSchema = new Schema({
     name: String,
     email: String,
     password: String,
-    username: String,
-    Review: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
+    username: String
 });
 
 var User = mongoose.model('User', UserSchema);
