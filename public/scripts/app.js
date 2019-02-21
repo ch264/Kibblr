@@ -64,31 +64,11 @@ $(function() {
     }
 
 
-    //Review Form API
-    // $('.review').click(function(e) {
-    //     e.preventDefault();
-    //     var restaurantPage = document.getElementsByTagName('h2')[0].innerText;
-
-    //     console.log(restaurantPage);
-
-    //     $.ajax({
-    //         method: 'GET',
-    //         url: `/api/search?place=${restaurantPage}`,
-    //         success: successWrite,
-    //         error: errorWrite
-    //     });
-    // })
-
     //Clicking on header leads to main page
     $('.navbar-brand').click(function(e) {
         e.preventDefault();
         window.location.href = "/";
     });
-    // Clicking on review button leads to review page
-    // $('.review').click(function(e) {
-    //     e.preventDefault();
-    //     window.location.href = "http://localhost:3000/reviewForm.html";
-    // });
 
     // create reviewform on click 
     $('#form').hide();
@@ -121,6 +101,8 @@ $(function() {
         console.log(error);
         console.log("error on new review creation");
     }
+
+
     //Bootstrap Sign Up Form Validator
     (function() {
         'use strict';
