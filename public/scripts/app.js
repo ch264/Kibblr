@@ -82,7 +82,8 @@ $(function() {
 
     $('.clickReview').on('click', function (e) {
         e.preventDefault();
-        console.log($('#review').serialize());
+        // console.log($('#review').serialize());
+        console.log("clicking");
     
         $.ajax({
             method: 'POST',
@@ -94,21 +95,13 @@ $(function() {
     });
     
     function newReviewSuccess(json) {
-        console.log(json);
-        $('.append-id').append(json.rating);
-        console.log($('.append-id'));
-        // render();
-        // console.log("the review worked");
-  
+        // console.log(json);
+        $('.append-id').append(`<li>${json.rating}, ${json.text}</li>`);
+        // console.log($('.append-id'));
     }
 
     function newReviewError(error) {
         console.log(error);
         console.log("error on new review creation")
     }
-
-    // function render() {
-    //     $('.reviewOne').append(YourNewReview);
-    // }
-
 });
