@@ -51,8 +51,13 @@ $(function() {
             console.log(placeLink);
             $('.searchedPlaces').append(
                 `<li><a href=${placeLink}>${placeName}</a></li>`
+<<<<<<< HEAD
             );
         });
+=======
+            )
+        })
+>>>>>>> master
     }
 
     function errorSearch(e) {
@@ -61,22 +66,67 @@ $(function() {
 
     function clearSearchItems() {
         $(`.searchedPlaces`).empty();
+<<<<<<< HEAD
     }
 
 
+=======
+    };
+
+
+    //Review Form API
+    // $('.review').click(function(e) {
+    //     e.preventDefault();
+    //     var restaurantPage = document.getElementsByTagName('h2')[0].innerText;
+
+    //     console.log(restaurantPage);
+
+    //     $.ajax({
+    //         method: 'GET',
+    //         url: `/api/search?place=${restaurantPage}`,
+    //         success: successWrite,
+    //         error: errorWrite
+    //     });
+    // })
+
+    // function successWrite(pizza) {
+
+    //     console.log(pizza);
+    //     let name = pizza[0].name;
+    //     $('.append-id').append(name);
+    // }
+
+    // function errorWrite(e) {
+    //     console.log("Place not found");
+    // }
+>>>>>>> master
 
     //Clicking on header leads to main page
     $('.navbar-brand').click(function(e) {
         e.preventDefault();
         window.location.href = "/";
     });
+<<<<<<< HEAD
 
+=======
+    // Clicking on review button leads to review page
+    // $('.review').click(function(e) {
+    //     e.preventDefault();
+    //     window.location.href = "http://localhost:3000/reviewForm.html";
+    // });
+>>>>>>> master
 
-    $('#form').hide();
     // create reviewform on click 
+<<<<<<< HEAD
     $('.createReviewButton').on('click', function() {
+=======
+    $('#form').hide();
+    $('.createReviewButton').on('click', function () {
+>>>>>>> master
         $('#form').slideToggle();
+        
     });
+<<<<<<< HEAD
 
     (function() {
         'use strict';
@@ -95,4 +145,31 @@ $(function() {
             });
         }, false);
     })();
+=======
+
+    $('.clickReview').on('click', function (e) {
+        e.preventDefault();
+        // console.log($('#review').serialize());
+        console.log("clicking");
+    
+        $.ajax({
+            method: 'POST',
+            url: '/api/review',
+            data: $('#review').serialize(),
+            success: newReviewSuccess,
+            error: newReviewError
+        });
+    });
+    
+    function newReviewSuccess(json) {
+        // console.log(json);
+        $('.append-id').append(`<li>${json.rating}, ${json.text}</li>`);
+        // console.log($('.append-id'));
+    }
+
+    function newReviewError(error) {
+        console.log(error);
+        console.log("error on new review creation")
+    }
+>>>>>>> master
 });

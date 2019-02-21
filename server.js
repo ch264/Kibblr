@@ -6,10 +6,13 @@ const app = express();
 //connect to database
 const db = require('./models');
 
+//handlebars
+const handlebars = require('handlebars');
+
 //add bodyparser
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 app.use(function(req, res, next) {
@@ -198,6 +201,7 @@ app.get('/api/review/:id', (req, res) => {
 
 //create a review
 app.post('/api/review', (req, res) => {
+<<<<<<< HEAD
     let Review = new db.Review({
         date: req.body.date,
         username: req.body.username,
@@ -208,6 +212,18 @@ app.post('/api/review', (req, res) => {
 
     db.Review.create(Review, (err, reviewCreated) => {
         if (err) { throw err; }
+=======
+    // let Review = new db.Review({
+    //     date: req.body.date,
+    //     username: req.body.username,
+    //     rating: req.body.rating,
+    //     text: req.body.text,
+    //     place: req.body.place
+    // });
+    console.log(req.body);
+    db.Review.create(req.body, (err, reviewCreated) => {
+        if (err) { throw err }
+>>>>>>> master
         res.json(reviewCreated);
         console.log("You have created a review!");
     });
