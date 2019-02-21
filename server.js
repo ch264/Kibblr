@@ -215,7 +215,7 @@ app.post('/api/review', (req, res) => {
     // });
     console.log(req.body);
     db.Review.create(req.body, (err, reviewCreated) => {
-        if (err) { throw err }
+        if (err) { throw err; }
         res.json(reviewCreated);
         console.log("You have created a review!");
     });
