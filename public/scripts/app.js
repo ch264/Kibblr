@@ -3,7 +3,7 @@ $(function() {
     console.log("ready!");
 
     let placeName = $('.barebottle').text();
-    let placeId='';
+    let placeId = '';
     $.ajax({
         method: 'GET',
         url: `/api/place/name/${placeName}`,
@@ -160,19 +160,31 @@ $(function() {
         }, false);
     })();
 
-
-    $.ajax({
-        method: 'GET',
-        url: `/api/user/${username}/${password}`,
-        success: newLoginSuccess,
-        error: newLoginError
+ 
+    // after login set user to local storage
+    // on click grab two things from html
+    $('.loginUser').on('click', function(e) {
+        e.preventDefault();
+        let username = $('.username').val();
+        let password = $('.password').val();
+debugger
+        $.ajax({
+            method: 'GET',
+            url: `/api/user/${username}/${password}`,
+            success: newLoginSuccess,
+            error: newLoginError
+        });
+        // newLoginSuccess = (response) => {
+        //     localStorage.userId = response._id
+        // }
     });
     newLoginSuccess = (response) => {
         localStorage.userId = response._id
     }
-
+    newLoginError = () => {
+        console.log('err');
+    }
     // localStorage.userId (getting it)
 });
 
 
-});
