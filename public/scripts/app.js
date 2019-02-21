@@ -51,13 +51,8 @@ $(function() {
             console.log(placeLink);
             $('.searchedPlaces').append(
                 `<li><a href=${placeLink}>${placeName}</a></li>`
-<<<<<<< HEAD
             );
         });
-=======
-            )
-        })
->>>>>>> master
     }
 
     function errorSearch(e) {
@@ -66,12 +61,7 @@ $(function() {
 
     function clearSearchItems() {
         $(`.searchedPlaces`).empty();
-<<<<<<< HEAD
     }
-
-
-=======
-    };
 
 
     //Review Form API
@@ -99,35 +89,50 @@ $(function() {
     // function errorWrite(e) {
     //     console.log("Place not found");
     // }
->>>>>>> master
 
     //Clicking on header leads to main page
     $('.navbar-brand').click(function(e) {
         e.preventDefault();
         window.location.href = "/";
     });
-<<<<<<< HEAD
-
-=======
     // Clicking on review button leads to review page
     // $('.review').click(function(e) {
     //     e.preventDefault();
     //     window.location.href = "http://localhost:3000/reviewForm.html";
     // });
->>>>>>> master
 
     // create reviewform on click 
-<<<<<<< HEAD
-    $('.createReviewButton').on('click', function() {
-=======
     $('#form').hide();
-    $('.createReviewButton').on('click', function () {
->>>>>>> master
+    $('.createReviewButton').on('click', function() {
         $('#form').slideToggle();
-        
-    });
-<<<<<<< HEAD
 
+    });
+
+    $('.clickReview').on('click', function(e) {
+        e.preventDefault();
+        // console.log($('#review').serialize());
+        console.log("clicking");
+
+        $.ajax({
+            method: 'POST',
+            url: '/api/review',
+            data: $('#review').serialize(),
+            success: newReviewSuccess,
+            error: newReviewError
+        });
+    });
+
+    function newReviewSuccess(json) {
+        // console.log(json);
+        $('.append-id').append(`<li>${json.rating}, ${json.text}</li>`);
+        // console.log($('.append-id'));
+    }
+
+    function newReviewError(error) {
+        console.log(error);
+        console.log("error on new review creation");
+    }
+    //Bootstrap Sign Up Form Validator
     (function() {
         'use strict';
         window.addEventListener('load', function() {
@@ -145,31 +150,5 @@ $(function() {
             });
         }, false);
     })();
-=======
 
-    $('.clickReview').on('click', function (e) {
-        e.preventDefault();
-        // console.log($('#review').serialize());
-        console.log("clicking");
-    
-        $.ajax({
-            method: 'POST',
-            url: '/api/review',
-            data: $('#review').serialize(),
-            success: newReviewSuccess,
-            error: newReviewError
-        });
-    });
-    
-    function newReviewSuccess(json) {
-        // console.log(json);
-        $('.append-id').append(`<li>${json.rating}, ${json.text}</li>`);
-        // console.log($('.append-id'));
-    }
-
-    function newReviewError(error) {
-        console.log(error);
-        console.log("error on new review creation")
-    }
->>>>>>> master
 });

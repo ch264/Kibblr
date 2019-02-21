@@ -201,18 +201,6 @@ app.get('/api/review/:id', (req, res) => {
 
 //create a review
 app.post('/api/review', (req, res) => {
-<<<<<<< HEAD
-    let Review = new db.Review({
-        date: req.body.date,
-        username: req.body.username,
-        rating: req.body.rating,
-        text: req.body.text,
-        place: req.body.place
-    });
-
-    db.Review.create(Review, (err, reviewCreated) => {
-        if (err) { throw err; }
-=======
     // let Review = new db.Review({
     //     date: req.body.date,
     //     username: req.body.username,
@@ -223,7 +211,6 @@ app.post('/api/review', (req, res) => {
     console.log(req.body);
     db.Review.create(req.body, (err, reviewCreated) => {
         if (err) { throw err }
->>>>>>> master
         res.json(reviewCreated);
         console.log("You have created a review!");
     });
