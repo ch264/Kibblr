@@ -51,17 +51,6 @@ $(function() {
     //     });
     // })
 
-    // function successWrite(pizza) {
-
-    //     console.log(pizza);
-    //     let name = pizza[0].name;
-    //     $('.append-id').append(name);
-    // }
-
-    // function errorWrite(e) {
-    //     console.log("Place not found");
-    // }
-
     //Clicking on header leads to main page
     $('.navbar-brand').click(function(e) {
         e.preventDefault();
@@ -104,4 +93,13 @@ $(function() {
         console.log(error);
         console.log("error on new review creation")
     }
+
+    // local storage
+    var cartItems = localStorage.getItem('cartItems');
+        cartItems.push(newItem);
+        localStorage.setItem('cartItems', cartItems);
+
+    // Then on the cart page:
+    var cartItems = localStorage.getItem('cartItems');
+    // then display cart items with append to DOM
 });
