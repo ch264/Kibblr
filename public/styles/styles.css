@@ -1,6 +1,6 @@
 /*************
- Global Styles
- *************/
+Global Styles
+*************/
 
 html,
 body,
@@ -23,8 +23,8 @@ footer {
 
 
 /******************
-  Header and Nav Bar
-  ******************/
+Header and Nav Bar
+******************/
 
 .container-fluid.kibblr-top-nav {
     padding-left: 0;
@@ -89,7 +89,7 @@ h2 {
 
 /*********
 Place Links
- **********/
+**********/
 
 div.place-link-wrapper {
     margin-top: -30px;
@@ -119,8 +119,8 @@ a.place-link:hover {
 
 
 /*********
- Search Bar
- **********/
+Search Bar
+**********/
 
 .mainSearch,
 .restDisplay {
@@ -157,8 +157,8 @@ button.kibblr-search {
 
 
 /******************
-  Index.html Gallery
-  ******************/
+Index.html Gallery
+******************/
 
 h3 {
     margin: auto;
@@ -196,14 +196,11 @@ h3 {
 
 /* Login Form */
 
-.wrapper {
-    margin: 80px auto;
+.imagewrapper {
+    margin: 15px auto;
+    ;
 }
 
-.form-signin {
-    max-width: 500px;
-    padding: 15px 35px 45px;
-    margin: auto;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+.wrapper {
+    margin: 150px auto;
 }
