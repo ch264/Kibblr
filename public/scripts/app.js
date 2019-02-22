@@ -2,7 +2,7 @@
 $(function() {
     console.log("ready!");
 
-    let placeName = $('.barebottle').text();
+    let placeName = $('.places').text();
     let placeId = '';
     $.ajax({
         method: 'GET',
