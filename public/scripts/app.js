@@ -2,18 +2,19 @@
 $(function() {
     console.log("ready!");
 
-    let placeName = $('.barebottle').text();
+    // Ajax call to keep place review on place page  
+    let placeName = $('.places').text();
     let placeId = '';
     $.ajax({
         method: 'GET',
-        url: `/api/place/name/${placeName}`,
+        url: `/api/placename/${placeName}`,
         success: setReviews,
         error: (err) => console.log(err)
     });
 
-    function setReviews(place){
+    function setReviews(place) {
         placeId = place._id;
-
+        console.log(place)
         $.ajax({
             method: 'GET',
             url: `/api/place/${placeId}/reviews`,
@@ -26,7 +27,7 @@ $(function() {
             error: (err) => console.log(err)
         });
     }
-    
+
 
 
     //Create A User
@@ -49,6 +50,7 @@ $(function() {
     function successUser() {
         console.log('User Created');
     }
+
     function errorUser() {
         console.log("Could not Create User");
     }
@@ -71,17 +73,20 @@ $(function() {
         clearSearchItems();
         response.forEach(function(element) {
             let placeLink = element.url;
-            let placeName = element.name;
-            console.log(placeName);
+            let placeNameFix = element.name;
+            console.log(placeNameFix);
             console.log(placeLink);
+
             $('.searchedPlaces').append(
-                `<li><a href=${placeLink}>${placeName}</a></li>`
+                `<li><a href=${placeLink}>${placeNameFix}</a></li>`
             );
         });
     }
+
     function errorSearch(e) {
         console.log("Search not found");
     }
+
     function clearSearchItems() {
         $(`.searchedPlaces`).empty();
     }
@@ -102,9 +107,9 @@ $(function() {
     $('.clickReview').on('click', function(e) {
         e.preventDefault();
         // console.log($('#review').serialize());
-        
-        let review = $('#review').serialize()+'&'+$.param({ 'place': placeId })+'&'+$.param({ 'username': '5c6f21dd6a18cc8bddc86fb1' });
-        
+
+        let review = $('#review').serialize() + '&' + $.param({ 'place': placeId }) + '&' + $.param({ 'username': '5c6f21dd6a18cc8bddc86fb1' });
+
         // review.place = placeId;
         console.log(review);
         $.ajax({
@@ -128,7 +133,7 @@ $(function() {
     }
 
     // keep new reviews on page after page refresh
-    
+
 
     // function reviewRemainSuccess(response) {
     //     for(let i = 0; i < response.review.length; i++) {
@@ -160,31 +165,29 @@ $(function() {
         }, false);
     })();
 
- 
+
     // after login set user to local storage
     // on click grab two things from html
-    $('.loginUser').on('click', function(e) {
-        e.preventDefault();
-        let username = $('.username').val();
-        let password = $('.password').val();
-
-        $.ajax({
-            method: 'GET',
-            url: `/api/user/${username}/${password}`,
-            success: newLoginSuccess,
-            error: newLoginError
-        });
-        // newLoginSuccess = (response) => {
-        //     localStorage.userId = response._id
-        // }
-    });
-    newLoginSuccess = (response) => {
-        localStorage.userId = response._id
-    }
-    newLoginError = () => {
-        console.log('err');
-    }
+    // $('.loginUser').on('click', function(e) {
+    //     e.preventDefault();
+    //     let username = $('.username').val();
+    //     let password = $('.password').val();
+    //     debugger
+    //     $.ajax({
+    //         method: 'GET',
+    //         url: `/api/user/${username}/${password}`,
+    //         success: newLoginSuccess,
+    //         error: newLoginError
+    //     });
+    //     // newLoginSuccess = (response) => {
+    //     //     localStorage.userId = response._id
+    //     // }
+    // });
+    // newLoginSuccess = (response) => {
+    //     localStorage.userId = response._id
+    // }
+    // newLoginError = () => {
+    //         console.log('err');
+    //     }
     // localStorage.userId (getting it)
 });
-
-
