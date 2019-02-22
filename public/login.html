@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kibblr</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
@@ -14,27 +14,28 @@
 <body>
     <!-- Header and Nav Bar -->
     <header>
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand navbar-fixed-top navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img src="" width="30" height="30" class="d-inline-block align-top" alt=""> Logo</a>
+        <div class="container-fluid kibblr-top-nav">
+            <nav class="navbar navbar-expand navbar-fixed-top kibblr-top-nav">
+                <a class="navbar-brand" href=""><img src="../images/kibblr-logos-white.png" width="30" height="30" class="d-inline-block align-top tennis-ball-one" alt=""></a>
                 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <span class="navbar-toggler-icon"></span>
+          </button>
                 <div class="collapse navbar-collapse " id="navbarNav">
                     <ul class="navbar-nav ml-auto ">
-                        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up </a></li>
+                        <li class="nav-item"><a class="nav-link kibblr-nav" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link kibblr-nav" href="signup.html">Sign Up</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
+
     </header>
     <main>
         <!-- Sign In Form -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 wrapper">
-                    <form id="loginUser" onSubmit="return validateForm();" method="GET" action="/" class="form-signin">
+                    <form id="loginUser" onSubmit="return validateForm();" method="POST" action="/" class="form-signin">
                         <h2 class="form-signin-heading">Login!</h2>
                         <input type="text" class="username form-control" name="username" placeholder="Username" value="" required="" autofocus="" />
                         <input type="password" class="password form-control" name="password" placeholder="Password" value="" required="" />

@@ -48,7 +48,7 @@ let places_list = [{
         type: 'restaurant',
         address: '1 Tillman Pl, San Francisco, CA 94108',
         rating: 2,
-        url: '../public/restaurantThree.html'
+        url: '../restaurantThree.html'
     },
     {
         name: 'Universal Cafe',
@@ -119,19 +119,19 @@ db.Review.deleteMany({}, (err, reviews) => {
     // console.log('removed all reviews');
 
     reviews_list.forEach(function(reviewData) {
-        db.Place.findOne({name: reviewData.place}, (err, foundPlace) => {
+        db.Place.findOne({ name: reviewData.place }, (err, foundPlace) => {
             // console.log(`${reviewData.username}`);
             if (err) {
                 console.log(err);
                 return;
             }
-            if(foundPlace){
-                db.User.findOne({username: reviewData.username}, (err, foundUser)=>{
+            if (foundPlace) {
+                db.User.findOne({ username: reviewData.username }, (err, foundUser) => {
                     if (err) {
                         console.log(err);
                         return;
                     }
-                    if(foundUser){
+                    if (foundUser) {
                         var review = new db.Review({
                             date: reviewData.date,
                             rating: reviewData.rating,
@@ -139,7 +139,7 @@ db.Review.deleteMany({}, (err, reviews) => {
                             username: foundUser._id,
                             place: foundPlace._id
                         });
-    // console.log(review);
+                        // console.log(review);
                         review.save(function(err, savedReview) {
                             if (err) {
                                 console.log(err);
@@ -147,14 +147,12 @@ db.Review.deleteMany({}, (err, reviews) => {
                             // console.log('saved ' + savedReview.text + ' by ' + savedReview.username);
                             console.log(savedReview);
                         });
-                    }
-                    else{
+                    } else {
                         console.log('user is not found');
                     }
                 })
-            }
-            else
+            } else
                 console.log('place is not found');
-        });   
+        });
     })
 });

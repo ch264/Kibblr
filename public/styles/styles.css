@@ -1,4 +1,6 @@
-/* Global Styles */
+/*************
+ Global Styles
+ *************/
 
 html,
 body,
@@ -6,10 +8,10 @@ footer {
     height: 100%;
     width: 100%;
     scroll-behavior: smooth;
-    background: #eee !important;
+    background: #FFFFFF;
     text-align: center;
     margin: auto 0;
-    font-family: 'raleway', 'sans-serif';
+    font-family: 'Nunito', 'sans-serif';
     text-align: center;
 }
 
@@ -18,34 +20,151 @@ footer {
 .form-group {
     margin: auto;
 }
-/* Header and Nav Bar */
+
+
+/******************
+  Header and Nav Bar
+  ******************/
+
+.container-fluid.kibblr-top-nav {
+    padding-left: 0;
+    height: 30px;
+}
 
 .navbar-nav {
     display: flex;
     flex-direction: row;
 }
 
-.nav-link {
-    padding: .5rem 1rem !important;
+a>img.tennis-ball-one {
+    width: 40px;
+    height: auto;
+    position: relative;
+    top: 20px;
+    left: 5px;
+    z-index: 5;
 }
+
+a.kibblr-nav {
+    padding: .5rem 1rem !important;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+a.kibblr-nav:hover {
+    text-decoration: none;
+    color: #f6f06b;
+}
+
+.kibblr-header {
+    background: #F5F2EC;
+    padding: 20px;
+}
+
+img.kibblr-header {
+    width: 700px;
+    height: auto;
+}
+
+h2 {
+    text-transform: uppercase;
+    color: #009966;
+    font-size: 23px;
+    letter-spacing: 2px;
+}
+
+
 /* Layout for index.html */
 
 .navbar {
     margin-bottom: 10em;
 }
 
+.navbar.kibblr-top-nav {
+    background: #8BCFB7;
+    width: 100vw;
+    height: 45px;
+}
+
+
+/*********
+Place Links
+ **********/
+
+div.place-link-wrapper {
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
+img.place-icon-square {
+    width: 25px;
+    height: auto;
+}
+
+img.place-icon-rectangle {
+    width: 50px;
+    height: auto;
+}
+
+a.place-link {
+    color: #33CCCC;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+a.place-link:hover {
+    text-decoration: underline;
+}
+
+
+/*********
+ Search Bar
+ **********/
+
 .mainSearch,
 .restDisplay {
     margin: 3em 0;
 }
 
+form#findPlace {
+    width: 100vw;
+}
+
+p.kibblr-search {
+    text-transform: uppercase;
+    color: #39C0C4;
+    position: relative;
+    top: 8px;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+input.kibblr-search {
+    border: 1px solid #8bcfb7;
+}
+
+button.kibblr-search {
+    background: #8bcfb7;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .searchedPlaces {
     list-style: none;
 }
-/* Index.html Gallery Page */
+
+
+/******************
+  Index.html Gallery
+  ******************/
 
 h3 {
     margin: auto;
+    text-transform: uppercase;
+    color: #019966;
+    letter-spacing: 3px;
 }
 
 .card {
@@ -53,6 +172,8 @@ h3 {
     margin-right: auto;
     margin-top: 4em;
 }
+
+
 /* Images */
 
 .object-fit-cover {
@@ -60,6 +181,8 @@ h3 {
     height: 320px;
     object-fit: cover;
 }
+
+
 /* Sign Up Form */
 
 .form-row {
@@ -69,6 +192,8 @@ h3 {
 .signupbutton {
     text-align: center;
 }
+
+
 /* Login Form */
 
 .wrapper {

@@ -2,7 +2,7 @@
 $(function() {
     console.log("ready!");
 
-    let placeName = $('.barebottle').text();
+    let placeName = $('.places').text();
     let placeId = '';
     $.ajax({
         method: 'GET',
@@ -13,14 +13,14 @@ $(function() {
 
     function setReviews(place) {
         placeId = place._id;
-
+        console.log(place)
         $.ajax({
             method: 'GET',
             url: `/api/place/${placeId}/reviews`,
             success: (res) => {
                 console.log(res);
                 res.forEach(review => {
-                    $('.append-id').append(`<li>${review.rating}, ${review.text}</li>`);
+                    $('.append-id').append(`<li><h2>${review.rating}, ${review.text}</h2></li>`);
                 })
             },
             error: (err) => console.log(err)
@@ -167,6 +167,7 @@ $(function() {
 
     // after login set user to local storage
     // on click grab two things from html
+<<<<<<< HEAD
     $('.loginUser').on('click', function(e) {
         e.preventDefault();
         let username = $('.username').val();
@@ -188,4 +189,28 @@ $(function() {
             console.log('err');
         }
         // localStorage.userId (getting it)
+=======
+    // $('.loginUser').on('click', function(e) {
+    //     e.preventDefault();
+    //     let username = $('.username').val();
+    //     let password = $('.password').val();
+    //     debugger
+    //     $.ajax({
+    //         method: 'GET',
+    //         url: `/api/user/${username}/${password}`,
+    //         success: newLoginSuccess,
+    //         error: newLoginError
+    //     });
+    //     // newLoginSuccess = (response) => {
+    //     //     localStorage.userId = response._id
+    //     // }
+    // });
+    // newLoginSuccess = (response) => {
+    //     localStorage.userId = response._id
+    // }
+    // newLoginError = () => {
+    //         console.log('err');
+    //     }
+    // localStorage.userId (getting it)
+>>>>>>> 4a6ee20758227e0fa9323638295fbf8fd73bf98d
 });
