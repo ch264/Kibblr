@@ -3,16 +3,16 @@ $(function() {
     console.log("ready!");
 
     let placeName = $('.places').text();
-    let placeId = placeName._id;
+    let placeId = '';
     $.ajax({
         method: 'GET',
-        url: `/api/placename/name?=${placeName}`,
+        url: `/api/placename/${placeName}`,
         success: setReviews,
         error: (err) => console.log(err)
     });
 
     function setReviews(place) {
-
+        placeId = place._id;
 
         $.ajax({
             method: 'GET',

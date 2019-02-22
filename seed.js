@@ -48,7 +48,7 @@ let places_list = [{
         type: 'restaurant',
         address: '1 Tillman Pl, San Francisco, CA 94108',
         rating: 2,
-        url: '../public/restaurantThree.html'
+        url: '../restaurantThree.html'
     },
     {
         name: 'Universal Cafe',
