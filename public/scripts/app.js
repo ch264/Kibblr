@@ -170,7 +170,6 @@ $(function() {
         e.preventDefault();
         let username = $('.username').val();
         let password = $('.password').val();
-        debugger
         $.ajax({
             method: 'GET',
             url: `/api/user/${username}/${password}`,
