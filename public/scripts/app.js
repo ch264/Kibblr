@@ -1,7 +1,6 @@
 //jshint esversion:6
 $(function() {
     console.log("ready!");
-
     // Ajax call to keep place review on place page  
     let placeName = $('.places').text();
     let placeId = '';
@@ -11,7 +10,6 @@ $(function() {
         success: setReviews,
         error: (err) => console.log(err)
     });
-
     function setReviews(place) {
         placeId = place._id;
         console.log(place)
@@ -27,9 +25,6 @@ $(function() {
             error: (err) => console.log(err)
         });
     }
-
-
-
     //Create A User
     $('.signUpButton').submit(function(e) {
         e.preventDefault();
@@ -46,17 +41,13 @@ $(function() {
             error: errorUser
         });
     });
-
     function successUser() {
         console.log('User Created');
     }
-
     function errorUser() {
         console.log("Could not Create User");
     }
-
     //Sign A User In
-
     //Search API
     $('#findPlace').submit(function(e) {
         e.preventDefault();
@@ -68,7 +59,6 @@ $(function() {
             error: errorSearch
         });
     });
-
     function successSearch(response) {
         clearSearchItems();
         response.forEach(function(element) {
@@ -76,40 +66,31 @@ $(function() {
             let placeNameFix = element.name;
             console.log(placeNameFix);
             console.log(placeLink);
-
             $('.searchedPlaces').append(
                 `<li><a href=${placeLink}>${placeNameFix}</a></li>`
             );
         });
     }
-
     function errorSearch(e) {
         console.log("Search not found");
     }
-
     function clearSearchItems() {
         $(`.searchedPlaces`).empty();
     }
-
-
     //Clicking on header leads to main page
     $('.navbar-brand').click(function(e) {
         e.preventDefault();
         window.location.href = "/";
     });
-
     // create reviewform on click 
     $('#form').hide();
     $('.createReviewButton').on('click', function() {
         $('#form').slideToggle();
     });
-
     $('.clickReview').on('click', function(e) {
         e.preventDefault();
         // console.log($('#review').serialize());
-
         let review = $('#review').serialize() + '&' + $.param({ 'place': placeId }) + '&' + $.param({ 'username': '5c6f21dd6a18cc8bddc86fb1' });
-
         // review.place = placeId;
         console.log(review);
         $.ajax({
@@ -120,32 +101,25 @@ $(function() {
             error: newReviewError
         });
     });
-
     function newReviewSuccess(json) {
         // console.log(json);
         $('.append-id').append(`<li>${json.rating}, ${json.text}</li>`);
         // console.log($('.append-id'));
     }
-
     function newReviewError(error) {
         console.log(error);
         console.log("error on new review creation");
     }
-
     // keep new reviews on page after page refresh
-
-
     // function reviewRemainSuccess(response) {
     //     for(let i = 0; i < response.review.length; i++) {
     //         let newReview = response.review;
     //         $(".append-id").append(`<li>${newReview}</li>`);
     //     }
     // }
-
     // function reviewRemainError(error) {
     //     console.log(error);
     // }
-
     //Bootstrap Sign Up Form Validator
     (function() {
         'use strict';
@@ -164,33 +138,8 @@ $(function() {
             });
         }, false);
     })();
-
-
     // after login set user to local storage
     // on click grab two things from html
-<<<<<<< HEAD
-    $('.loginUser').on('click', function(e) {
-        e.preventDefault();
-        let username = $('.username').val();
-        let password = $('.password').val();
-        $.ajax({
-            method: 'GET',
-            url: `/api/user/${username}/${password}`,
-            success: newLoginSuccess,
-            error: newLoginError
-        });
-        // newLoginSuccess = (response) => {
-        //     localStorage.userId = response._id
-        // }
-    });
-    newLoginSuccess = (response) => {
-        localStorage.userId = response._id
-    }
-    newLoginError = () => {
-            console.log('err');
-        }
-        // localStorage.userId (getting it)
-=======
     // $('.loginUser').on('click', function(e) {
     //     e.preventDefault();
     //     let username = $('.username').val();
@@ -213,5 +162,4 @@ $(function() {
     //         console.log('err');
     //     }
     // localStorage.userId (getting it)
->>>>>>> 4a6ee20758227e0fa9323638295fbf8fd73bf98d
 });
