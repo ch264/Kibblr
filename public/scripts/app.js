@@ -2,6 +2,7 @@
 $(function() {
     console.log("ready!");
 
+    // display review that are in database on page
     let placeName = $('.barebottle').text();
     let placeId='';
     $.ajax({
@@ -28,7 +29,6 @@ $(function() {
     }
     
 
-
     //Create A User
     $('.signUpButton').submit(function(e) {
         e.preventDefault();
@@ -53,7 +53,6 @@ $(function() {
         console.log("Could not Create User");
     }
 
-    //Sign A User In
 
     //Search API
     $('#findPlace').submit(function(e) {
@@ -71,11 +70,11 @@ $(function() {
         clearSearchItems();
         response.forEach(function(element) {
             let placeLink = element.url;
-            let placeName = element.name;
-            console.log(placeName);
+            let placeNameFix = element.name;
+            console.log(placeNameFix);
             console.log(placeLink);
             $('.searchedPlaces').append(
-                `<li><a href=${placeLink}>${placeName}</a></li>`
+                `<li><a href=${placeLink}>${placeNameFix}</a></li>`
             );
         });
     }
@@ -93,12 +92,13 @@ $(function() {
         window.location.href = "/";
     });
 
-    // create reviewform on click 
+    // toggle reviewform on click 
     $('#form').hide();
     $('.createReviewButton').on('click', function() {
         $('#form').slideToggle();
     });
 
+    // append dynamic review to page
     $('.clickReview').on('click', function(e) {
         e.preventDefault();
         // console.log($('#review').serialize());

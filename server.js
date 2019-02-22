@@ -133,7 +133,7 @@ app.get('/api/place/name/:name', (req, res) => {
     });
 });
 
-//find one place
+// find one place
 app.get('/api/place/:id', (req, res) => {
     db.Place.findOne({ _id: req.params.id }, (err, foundPlace) => {
         if (err) { throw err };
@@ -181,10 +181,10 @@ app.delete('/api/place/:id', (req, res) => {
 app.get('/api/search', (req, res) => {
     console.log("You've tried searching for a place.");
     let searchTerm = req.query.place;
-    console.log('searchTerm');
+    console.log(searchTerm);
     db.Place.find({ "name": { "$regex": searchTerm } })
         .exec((err, searchedPlaces) => {
-            if (err) return console.log(err);
+            if (err) return console.log("this is an error to log places");
             console.log(searchedPlaces);
             res.json(searchedPlaces);
         });

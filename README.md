@@ -3,10 +3,13 @@ A full-stack web application built from the ground up by Brandon Castillo, Tiffa
 
 ### Kibblr
 Short explanation of the project (1-2 sentences) - what is the goal of the project and/or main functionality?
-Kibblr is a yelp like app for users to leave reviews about restaurants, rating them on their dog friendliness
+Kibblr is a yelp like app for users to leave reviews about restaurants, rating them on their dog friendliness.
 
 Link to project hosted on Heroku
 https://kibblr.herokuapp.com/
+
+Link to project on github
+https://github.com/brandonmcastillo/Project01
 
 ## Technologies Used 
 What technologies did you use to develop this project? (bullet points)
@@ -27,4 +30,10 @@ What features does your app have? (bullet points)
 
 ## Planned Features
 What changes would you make to your project if you continue to work on it? (bullet points)
+- finish the AJAX calls to do CRUD on frontend
+- integrate google maps API to show places
+- finish login
+- add parks and stores 
+- add a rating feature
+- make search work on heroku
 
