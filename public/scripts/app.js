@@ -29,7 +29,7 @@ $(function() {
     }
     
 
-    //Create A User
+    //Create a user
     $('.signUpButton').submit(function(e) {
         e.preventDefault();
         $.ajax({
