@@ -20,7 +20,7 @@ $(function() {
             success: (res) => {
                 console.log(res);
                 res.forEach(review => {
-                    $('.append-id').append(`<li>${review.rating}, ${review.text}</li>`);
+                    $('.append-id').append(`<li><h2>${review.rating}, ${review.text}</h2></li>`);
                 })
             },
             error: (err) => console.log(err)
