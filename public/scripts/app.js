@@ -72,11 +72,12 @@ $(function() {
         clearSearchItems();
         response.forEach(function(element) {
             let placeLink = element.url;
-            let placeName = element.name;
-            console.log(placeName);
+            let placeNameFix = element.name;
+            console.log(placeNameFix);
             console.log(placeLink);
+
             $('.searchedPlaces').append(
-                `<li><a href=${placeLink}>${placeName}</a></li>`
+                `<li><a href=${placeLink}>${placeNameFix}</a></li>`
             );
         });
     }
