@@ -3,7 +3,7 @@ A full-stack web application built from the ground up by Brandon Castillo, Tiffa
 
 ### Kibblr
 Short explanation of the project (1-2 sentences) - what is the goal of the project and/or main functionality?
-Kibblr is a yelp like app for users to leave reviews about restaurants, rating them on their dog friendliness
+Kibblr is a yelp like web application that allows users to leave reviews about restaurants, rating them on their dog friendliness. A user can sign up and login, search for a place that already exists in the database and navigate to that page to leave a review. A user can also go to a page that lists all restaurants in the database.
 
 Link to project hosted on Heroku
 https://kibblr.herokuapp.com/

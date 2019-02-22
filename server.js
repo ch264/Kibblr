@@ -57,9 +57,9 @@ app.get('/', (req, res) => {
     res.sendFile('views/index.html', { root: __dirname });
 });
 
-app.get('/one', (req, res) => {
-    res.sendFile('views/restaurantOne.html', { root: __dirname });
-});
+// app.get('/one', (req, res) => {
+//     res.sendFile('views/restaurantOne.html', { root: __dirname });
+// });
 
 //////////////////
 // User Routes
@@ -113,6 +113,9 @@ app.delete('/api/user/:id', (req, res) => {
         });
 });
 
+// app.get('/api/user/${username}/${password}', (req, res) => {
+
+// }
 
 //////////////////
 // Places Routes
