@@ -57,9 +57,9 @@ app.get('/', (req, res) => {
     res.sendFile('views/index.html', { root: __dirname });
 });
 
-app.get('/one', (req, res) => {
-    res.sendFile('views/restaurantOne.html', { root: __dirname });
-});
+// app.get('/one', (req, res) => {
+//     res.sendFile('views/restaurantOne.html', { root: __dirname });
+// });
 
 //////////////////
 // User Routes
@@ -126,7 +126,7 @@ app.get('/api/place', (req, res) => {
     });
 });
 
-app.get('/api/place/name/:name', (req, res) => {
+app.get('/api/placename/:name', (req, res) => {
     db.Place.findOne({ name: req.params.name }, (err, foundPlace) => {
         if (err) { throw err };
         res.json(foundPlace);
@@ -215,7 +215,7 @@ app.get('/api/review/:id', (req, res) => {
 
 // find all reviews of one place
 app.get('/api/place/:id/reviews', (req, res) => {
-    db.Review.find({place: req.params.id})
+    db.Review.find({ place: req.params.id })
         .populate('username')
         .populate('place')
         .exec((err, foundReviews) => {

@@ -6,12 +6,12 @@ $(function() {
     let placeId = '';
     $.ajax({
         method: 'GET',
-        url: `/api/place/name/${placeName}`,
+        url: `/api/placename/${placeName}`,
         success: setReviews,
         error: (err) => console.log(err)
     });
 
-    function setReviews(place){
+    function setReviews(place) {
         placeId = place._id;
 
         $.ajax({
@@ -26,8 +26,6 @@ $(function() {
             error: (err) => console.log(err)
         });
     }
-    
-
 
     //Create A User
     $('.signUpButton').submit(function(e) {
@@ -49,6 +47,7 @@ $(function() {
     function successUser() {
         console.log('User Created');
     }
+
     function errorUser() {
         console.log("Could not Create User");
     }
@@ -79,9 +78,11 @@ $(function() {
             );
         });
     }
+
     function errorSearch(e) {
         console.log("Search not found");
     }
+
     function clearSearchItems() {
         $(`.searchedPlaces`).empty();
     }
@@ -102,9 +103,9 @@ $(function() {
     $('.clickReview').on('click', function(e) {
         e.preventDefault();
         // console.log($('#review').serialize());
-        
-        let review = $('#review').serialize()+'&'+$.param({ 'place': placeId })+'&'+$.param({ 'username': '5c6f21dd6a18cc8bddc86fb1' });
-        
+
+        let review = $('#review').serialize() + '&' + $.param({ 'place': placeId }) + '&' + $.param({ 'username': '5c6f21dd6a18cc8bddc86fb1' });
+
         // review.place = placeId;
         console.log(review);
         $.ajax({
@@ -128,7 +129,7 @@ $(function() {
     }
 
     // keep new reviews on page after page refresh
-    
+
 
     // function reviewRemainSuccess(response) {
     //     for(let i = 0; i < response.review.length; i++) {
@@ -160,14 +161,13 @@ $(function() {
         }, false);
     })();
 
- 
+
     // after login set user to local storage
     // on click grab two things from html
     $('.loginUser').on('click', function(e) {
         e.preventDefault();
         let username = $('.username').val();
         let password = $('.password').val();
-debugger
         $.ajax({
             method: 'GET',
             url: `/api/user/${username}/${password}`,
@@ -182,9 +182,7 @@ debugger
         localStorage.userId = response._id
     }
     newLoginError = () => {
-        console.log('err');
-    }
-    // localStorage.userId (getting it)
+            console.log('err');
+        }
+        // localStorage.userId (getting it)
 });
-
-
