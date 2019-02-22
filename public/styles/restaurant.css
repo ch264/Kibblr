@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+p {
+    font-family: 'Nunito', 'sans-serif';
+}
+
+body a {
+    /* text-decoration-color: #32C0C4; */
+    text-decoration-color: none;
+}
+
+h2 {
+    margin-bottom: 2em;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+/* Button */
+
+.btn {
+    background-color: #8BCFB7;
+    color: white;
+}
+
+form button {
+    margin-top: 1em;
+}
+
+
+/* Form  */
+
+form h3 {
+    margin-top: 1.5em;
+}
+
+label {
+    /* padding-left: 0.7em; */
+    color: #029966;
+}
+
+.rating {
+    margin-top: 2em;
+}
+
+.review {
+    margin-top: 1.5em;
+}
+
+.row {
+    margin-top: 5em;
+}
+
+
+/* rating  */
+
+.tennisball {
+    height: 1em;
+    width: 1em;
+}
+
+footer {
+    height: 30px;
+}
