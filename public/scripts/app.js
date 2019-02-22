@@ -3,16 +3,16 @@ $(function() {
     console.log("ready!");
 
     let placeName = $('.places').text();
-    let placeId = '';
+    let placeId = placeName._id;
     $.ajax({
         method: 'GET',
-        url: `/api/placename/${placeName}`,
+        url: `/api/placename/name?=${placeName}`,
         success: setReviews,
         error: (err) => console.log(err)
     });
 
     function setReviews(place) {
-        placeId = place._id;
+
 
         $.ajax({
             method: 'GET',
@@ -167,26 +167,26 @@ $(function() {
 
     // after login set user to local storage
     // on click grab two things from html
-    $('.loginUser').on('click', function(e) {
-        e.preventDefault();
-        let username = $('.username').val();
-        let password = $('.password').val();
-        debugger
-        $.ajax({
-            method: 'GET',
-            url: `/api/user/${username}/${password}`,
-            success: newLoginSuccess,
-            error: newLoginError
-        });
-        // newLoginSuccess = (response) => {
-        //     localStorage.userId = response._id
-        // }
-    });
-    newLoginSuccess = (response) => {
-        localStorage.userId = response._id
-    }
-    newLoginError = () => {
-            console.log('err');
-        }
-        // localStorage.userId (getting it)
+    // $('.loginUser').on('click', function(e) {
+    //     e.preventDefault();
+    //     let username = $('.username').val();
+    //     let password = $('.password').val();
+    //     debugger
+    //     $.ajax({
+    //         method: 'GET',
+    //         url: `/api/user/${username}/${password}`,
+    //         success: newLoginSuccess,
+    //         error: newLoginError
+    //     });
+    //     // newLoginSuccess = (response) => {
+    //     //     localStorage.userId = response._id
+    //     // }
+    // });
+    // newLoginSuccess = (response) => {
+    //     localStorage.userId = response._id
+    // }
+    // newLoginError = () => {
+    //         console.log('err');
+    //     }
+    // localStorage.userId (getting it)
 });
