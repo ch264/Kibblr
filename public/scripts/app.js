@@ -2,6 +2,7 @@
 $(function() {
     console.log("ready!");
 
+    // Ajax call to keep place review on place page  
     let placeName = $('.places').text();
     let placeId = '';
     $.ajax({

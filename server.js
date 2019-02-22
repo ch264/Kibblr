@@ -114,6 +114,9 @@ app.delete('/api/user/:id', (req, res) => {
         });
 });
 
+// app.get('/api/user/${username}/${password}', (req, res) => {
+
+// }
 
 //////////////////
 // Places Routes
