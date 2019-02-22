@@ -1,6 +1,6 @@
 /*************
-Global Styles
-*************/
+ Global Styles
+ *************/
 
 html,
 body,
@@ -23,8 +23,8 @@ footer {
 
 
 /******************
-Header and Nav Bar
-******************/
+   Header and Nav Bar
+   ******************/
 
 .container-fluid.kibblr-top-nav {
     padding-left: 0;
@@ -73,6 +73,14 @@ h2 {
     letter-spacing: 2px;
 }
 
+img.kibblr-between-header {
+    width: 150px;
+    height: auto;
+    position: relative;
+    top: -90px;
+    left: 300px;
+}
+
 
 /* Layout for index.html */
 
@@ -88,8 +96,8 @@ h2 {
 
 
 /*********
-Place Links
-**********/
+ Place Links
+  **********/
 
 div.place-link-wrapper {
     margin-top: -30px;
@@ -119,10 +127,16 @@ a.place-link:hover {
 
 
 /*********
-Search Bar
-**********/
+  Search Bar
+  **********/
 
-.mainSearch,
+.mainSearch {
+    position: relative;
+    top: -80px;
+    margin-top: 0px;
+    margin-bottom: 0;
+}
+
 .restDisplay {
     margin: 3em 0;
 }
@@ -151,14 +165,20 @@ button.kibblr-search {
     letter-spacing: 2px;
 }
 
+button.kibblr-search:hover {
+    background: #009966;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
 .searchedPlaces {
     list-style: none;
 }
 
 
 /******************
-Index.html Gallery
-******************/
+   Index.html Gallery
+   ******************/
 
 h3 {
     margin: auto;
@@ -171,10 +191,64 @@ h3 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 4em;
+    border: none;
+}
+
+img.kibblr-gallery {
+    border-radius: 8px;
+}
+
+h5.kibblr-gallery {
+    text-transform: uppercase;
+    color: #99CCCC;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+p.kibblr-gallery {
+    color: #A0A0A0;
+    margin-bottom: 5px;
+}
+
+p.kibblr-gallery.address-bottom {
+    margin-top: -10px;
 }
 
 
-/* Images */
+/*********
+ Footer
+ *********/
+
+div.footer-wrapper {
+    padding: 0px;
+}
+
+footer {
+    height: 40px;
+    background: #99CCCC;
+    color: #FFFFFF;
+    width: 100vw;
+}
+
+img.kibblr-footer {
+    width: 100px;
+    height: auto;
+    position: relative;
+    top: 20px;
+    left: -200px;
+}
+
+p.kibblr-footer {
+    float: right;
+    margin-right: 15px;
+    position: relative;
+    top: 7px;
+}
+
+
+/*********
+ Images
+ *********/
 
 .object-fit-cover {
     width: 100%;
@@ -183,7 +257,9 @@ h3 {
 }
 
 
-/* Sign Up Form */
+/*********
+  Sign Up Form
+  ********/
 
 .form-row {
     text-align: left !important;
@@ -194,7 +270,17 @@ h3 {
 }
 
 
-/* Login Form */
+/********
+ Login Form
+ **********/
+
+.form-signin {
+    max-width: 500px;
+    padding: 15px 35px 45px;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
 
 .imagewrapper {
     margin: 15px auto;
