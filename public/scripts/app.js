@@ -13,7 +13,7 @@ $(function() {
 
     function setReviews(place) {
         placeId = place._id;
-
+        console.log(place)
         $.ajax({
             method: 'GET',
             url: `/api/place/${placeId}/reviews`,
