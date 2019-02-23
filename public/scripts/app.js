@@ -1,35 +1,31 @@
 //jshint esversion:6
 $(function() {
     console.log("ready!");
-
-    // display review that are in database on page
-    let placeName = $('.barebottle').text();
-    let placeId='';
+    // Ajax call to keep place review on place page  
+    let placeName = $('.places').text();
+    let placeId = '';
     $.ajax({
         method: 'GET',
-        url: `/api/place/name/${placeName}`,
+        url: `/api/placename/${placeName}`,
         success: setReviews,
         error: (err) => console.log(err)
     });
-
-    function setReviews(place){
+    function setReviews(place) {
         placeId = place._id;
-
+        console.log(place)
         $.ajax({
             method: 'GET',
             url: `/api/place/${placeId}/reviews`,
             success: (res) => {
                 console.log(res);
                 res.forEach(review => {
-                    $('.append-id').append(`<li>${review.rating}, ${review.text}</li>`);
+                    $('.append-id').append(`<li><h2>${review.rating}, ${review.text}</h2></li>`);
                 })
             },
             error: (err) => console.log(err)
         });
     }
-    
-
-    //Create a user
+    //Create A User
     $('.signUpButton').submit(function(e) {
         e.preventDefault();
         $.ajax({
@@ -45,15 +41,13 @@ $(function() {
             error: errorUser
         });
     });
-
     function successUser() {
         console.log('User Created');
     }
     function errorUser() {
         console.log("Could not Create User");
     }
-
-
+    //Sign A User In
     //Search API
     $('#findPlace').submit(function(e) {
         e.preventDefault();
@@ -65,7 +59,6 @@ $(function() {
             error: errorSearch
         });
     });
-
     function successSearch(response) {
         clearSearchItems();
         response.forEach(function(element) {
@@ -84,26 +77,20 @@ $(function() {
     function clearSearchItems() {
         $(`.searchedPlaces`).empty();
     }
-
-
     //Clicking on header leads to main page
     $('.navbar-brand').click(function(e) {
         e.preventDefault();
         window.location.href = "/";
     });
-
-    // toggle reviewform on click 
+    // create reviewform on click 
     $('#form').hide();
     $('.createReviewButton').on('click', function() {
         $('#form').slideToggle();
     });
-
-    // append dynamic review to page
     $('.clickReview').on('click', function(e) {
         e.preventDefault();
         // console.log($('#review').serialize());
-        
-        let review = $('#review').serialize()+'&'+$.param({ 'place': placeId });
+        let review = $('#review').serialize() + '&' + $.param({ 'place': placeId }) + '&' + $.param({ 'username': '5c6f21dd6a18cc8bddc86fb1' });
         // review.place = placeId;
         console.log(review);
         $.ajax({
@@ -114,32 +101,25 @@ $(function() {
             error: newReviewError
         });
     });
-
     function newReviewSuccess(json) {
         // console.log(json);
         $('.append-id').append(`<li>${json.rating}, ${json.text}</li>`);
         // console.log($('.append-id'));
     }
-
     function newReviewError(error) {
         console.log(error);
         console.log("error on new review creation");
     }
-
     // keep new reviews on page after page refresh
-    
-
     // function reviewRemainSuccess(response) {
     //     for(let i = 0; i < response.review.length; i++) {
     //         let newReview = response.review;
     //         $(".append-id").append(`<li>${newReview}</li>`);
     //     }
     // }
-
     // function reviewRemainError(error) {
     //     console.log(error);
     // }
-
     //Bootstrap Sign Up Form Validator
     (function() {
         'use strict';
@@ -158,8 +138,28 @@ $(function() {
             });
         }, false);
     })();
-
-
-
-
+    // after login set user to local storage
+    // on click grab two things from html
+    // $('.loginUser').on('click', function(e) {
+    //     e.preventDefault();
+    //     let username = $('.username').val();
+    //     let password = $('.password').val();
+    //     debugger
+    //     $.ajax({
+    //         method: 'GET',
+    //         url: `/api/user/${username}/${password}`,
+    //         success: newLoginSuccess,
+    //         error: newLoginError
+    //     });
+    //     // newLoginSuccess = (response) => {
+    //     //     localStorage.userId = response._id
+    //     // }
+    // });
+    // newLoginSuccess = (response) => {
+    //     localStorage.userId = response._id
+    // }
+    // newLoginError = () => {
+    //         console.log('err');
+    //     }
+    // localStorage.userId (getting it)
 });

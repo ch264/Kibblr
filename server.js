@@ -14,6 +14,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
 // allow cross origin requests (optional)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 app.use(function(req, res, next) {
@@ -57,9 +58,9 @@ app.get('/', (req, res) => {
     res.sendFile('views/index.html', { root: __dirname });
 });
 
-app.get('/one', (req, res) => {
-    res.sendFile('views/restaurantOne.html', { root: __dirname });
-});
+// app.get('/one', (req, res) => {
+//     res.sendFile('views/restaurantOne.html', { root: __dirname });
+// });
 
 //////////////////
 // User Routes
@@ -113,6 +114,9 @@ app.delete('/api/user/:id', (req, res) => {
         });
 });
 
+// app.get('/api/user/${username}/${password}', (req, res) => {
+
+// }
 
 //////////////////
 // Places Routes
@@ -126,7 +130,7 @@ app.get('/api/place', (req, res) => {
     });
 });
 
-app.get('/api/place/name/:name', (req, res) => {
+app.get('/api/placename/:name', (req, res) => {
     db.Place.findOne({ name: req.params.name }, (err, foundPlace) => {
         if (err) { throw err };
         res.json(foundPlace);
@@ -215,7 +219,7 @@ app.get('/api/review/:id', (req, res) => {
 
 // find all reviews of one place
 app.get('/api/place/:id/reviews', (req, res) => {
-    db.Review.find({place: req.params.id})
+    db.Review.find({ place: req.params.id })
         .populate('username')
         .populate('place')
         .exec((err, foundReviews) => {
@@ -229,7 +233,7 @@ app.get('/api/place/:id/reviews', (req, res) => {
 app.post('/api/review', (req, res) => {
     console.log(req.body);
     db.Review.create(req.body, (err, reviewCreated) => {
-        if (err) { throw err }
+        if (err) { throw err; }
         res.json(reviewCreated);
         console.log("You have created a review!");
     });
@@ -306,6 +310,57 @@ app.delete('/api/place/:id', (req, res) => {
             res.json(deletedPlace);
         });
 });
+
+
+/*  PASSPORT SETUP  */
+
+const passport = require('passport');
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/success', (req, res) => res.send("Welcome " + req.query.username + "!!"));
+app.get('/error', (req, res) => res.send("error logging in"));
+
+passport.serializeUser(function(user, cb) {
+    cb(null, user.id);
+});
+
+passport.deserializeUser(function(id, cb) {
+    User.findById(id, function(err, user) {
+        cb(err, user);
+    });
+});
+
+/* PASSPORT LOCAL AUTHENTICATION */
+
+const LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        db.User.findOne({
+            username: username
+        }, function(err, user) {
+            if (err) {
+                return done(err);
+            }
+
+            if (!user) {
+                return done(null, false);
+            }
+
+            if (user.password != password) {
+                return done(null, false);
+            }
+            return done(null, user);
+        });
+    }
+));
+
+app.post('/',
+    passport.authenticate('local', { failureRedirect: '/login.html' }),
+    function(req, res) {
+        res.redirect('/');
+    });
 
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000

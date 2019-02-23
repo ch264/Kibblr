@@ -1,121 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Kibblr 🐾</title>
-        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="styles/styles.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kibblr 🐾</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
 
-    <body>
-        <!-- Header and Nav Bar -->
-        <header>
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand navbar-fixed-top navbar-light bg-light">
-                    <a class="navbar-brand" href=""><img src="" width="30" height="30" class="d-inline-block align-top" alt=""> Kibblr</a>
-                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse " id="navbarNav">
-                        <ul class="navbar-nav ml-auto ">
-                            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
-                        </ul>
-                    </div>
-                </nav>
+<body>
+    <!-- Header and Nav Bar -->
+    <header>
+        <div class="container-fluid kibblr-top-nav">
+            <nav class="navbar navbar-expand navbar-fixed-top kibblr-top-nav">
+                <a class="navbar-brand" href=""><img src="../images/kibblr-logos-tennisball.png" width="30" height="30" class="d-inline-block align-top tennis-ball-one" alt=""></a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+                <div class="collapse navbar-collapse " id="navbarNav">
+                    <ul class="navbar-nav ml-auto ">
+                        <li class="nav-item"><a class="nav-link kibblr-nav" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link kibblr-nav" href="signup.html">Sign Up</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="container-fluid kibblr-header">
+            <div class="row ">
+                <div class="col-md-12 kibblr-header">
+                    <img class="kibblr-header" src="../images/kibblr-logos-blue.png">
+                    <h2>Yelp if you love dog stuff!</h2>
+                </div>
             </div>
-        </header>
-        <main>
-            <!-- Search Bar and Categories Links -->
-            <section class="mainSearch">
-                <div class="container-fluid ">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Hello</h2>
-                            <form id="findPlace" method="GET" action="/api/search" class="form-inline">
-                                <div class="form-group ">
-                                    <input type="text" name="name" class="form-control" id="searchTerm" placeholder="Find restaurants, stores and more!">
-                                    <button type="submit" class="search btn btn-light">Search Place</button>
-                                </div>
-                            </form>
-                        </div>
+        </div>
+    </header>
+    <img class="kibblr-between-header" src="../images/kibblr-logos-tennisball-left.png">
+    <main>
+        <!-- Search Bar and Categories Links -->
+        <section class="mainSearch">
+            <!-- Place Links -->
+            <div class="container-fluid place-link-wrapper">
+                <div class="row d-flex justify-content-around">
+                    <div class="col-md-2">
+                        <img class="place-icon-square" src="../images/kibblr-logos-tennisball.png" alt="Parks Icon">
+                        <br>
+                        <a class="place-link" href="#">Parks</a>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="navbar-nav categories  ">
-                                <li class="nav-item"><a class="nav-link" href="http://localhost:3000/restaurantList.html">Restaurant</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Parks</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Stores</a></li>
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul class="searchedPlaces">
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="col-md-2">
+                        <img class="place-icon-rectangle" src="../images/kibblr-logos-green-bone.png" alt="Restaurants Icon">
+                        <br>
+                        <a class="place-link" href="../restaurantList.html">Restaurants</a>
+                    </div>
+                    <div class="col-md-2">
+                        <img class="place-icon-square" src="../images/kibblr-logos-shops-blue.png" alt="Shops Icon">
+                        <br>
+                        <a class="place-link" href="#">Stores</a>
                     </div>
                 </div>
-            </section>
-            <!-- Restaurants Display Section -->
-            <section class="restDisplay">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12 ">
-                            <h3>San Francisco, CA.</h3>
+            </div>
+            <!-- Search Bar -->
+            <div class="container-fluid ">
+                <div class="row kibblr-search">
+                    <form id="findPlace" method="GET" action="/api/search" class="form-inline">
+                        <div class="form-group ">
+                            <p class="kibblr-search">Find</p>
+                            <input type="text" name="name" class="form-control kibblr-search" id="searchTerm" placeholder="Restaurants, Shops, Parks, Etc.">
+                            <p class="kibblr-search">Near</p>
+                            <input type="text" name="name" class="form-control kibblr-search" placeholder="San Francisco, CA">
+                            <button type="submit" class="search btn btn-light kibblr-search">Fetch</button>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card" style="width: 18rem;">
-                                <a href="restaurantOne.html"><img class="card-img-top object-fit-cover" src="../images/UniversalCafe.jpg" alt="Card image cap"></a>
-                                <div class="card-body">
-                                    <h5 class="card-title">Universal Cafe</h5>
-                                    <p class="card-text">2814 19th St San Francisco, CA 94110 b/t Florida St & Bryant St Mission</p>
-                                    <p class="card-text">🐾🐾🐾🐾</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card" style="width: 18rem;">
-                                <a href="restaurantTwo.html"><img class="card-img-top object-fit-cover" src="../images/barebottle.jpg" alt="Card image cap"></a>
-                                <div class="card-body">
-                                    <h5 class="card-title">Barebottle Brewing Company</h5>
-                                    <p class="card-text">1525 Cortland Ave San Francisco, CA 94110 b/t Bradford St & Peralta Ave Bernal Heights</p>
-                                    <p class="card-text">🐾🐾🐾🐾🐾</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card" style="width: 18rem;">
-                                <a href="restaurantThree.html"><img class="card-img-top object-fit-cover" src="../images/hops.jpg" alt="Card image cap"></a>
-                                <div class="card-body">
-                                    <h5 class="card-title">Hops & Hominy</h5>
-                                    <p class="card-text">1 Tillman Pl San Francisco, CA 94108 at Grant Ave Union Square, Financial District</p>
-                                    <p class="card-text">🐾🐾🐾🐾</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-            </section>
-        </main>
-        <!-- Footer -->
-        <footer>
-            <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <p>© 2019 TCB</p>
+                        <ul class="searchedPlaces">
+                        </ul>
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- Restaurants Gallery -->
+        <section class="restDisplay">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <h3>Results for San Francisco, CA.</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <a href="restaurantOne.html"><img class="card-img-top object-fit-cover kibblr-gallery" src="../images/UniversalCafe.jpg" alt="Card image cap"></a>
+                            <div class="card-body kibblr-gallery">
+                                <h5 class="card-title kibblr-gallery">Universal Cafe</h5>
+                                <p class="card-text kibblr-gallery">2814 19th St</p>
+                                <p class="card-text kibblr-gallery address-bottom">San Francisco, CA 94110</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <a href="restaurantTwo.html"><img class="card-img-top object-fit-cover kibblr-gallery" src="../images/barebottle.jpg" alt="Card image cap"></a>
+                            <div class="card-body">
+                                <h5 class="card-title kibblr-gallery">Barebottle Brewing Company</h5>
+                                <p class="card-text kibblr-gallery">1525 Cortland Ave</p>
+                                <p class="card-text kibblr-gallery address-bottom">San Francisco, CA 94110</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <a href="restaurantThree.html"><img class="card-img-top object-fit-cover kibblr-gallery" src="../images/hops.jpg" alt="Card image cap"></a>
+                            <div class="card-body">
+                                <h5 class="card-title kibblr-gallery">Hops & Hominy</h5>
+                                <p class="card-text kibblr-gallery">1 Tillman Pl</p>
+                                <p class="card-text kibblr-gallery address-bottom">San Francisco, CA 94108</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <div class="container-fluid footer-wrapper">
+        <img class="kibblr-footer" src="../images/kibblr-logos-tennisball.png">
+        <footer>
+            <p class="kibblr-footer">© 2019 TCB</p>
         </footer>
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="scripts/app.js"></script>
-    </body>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
 </html>
