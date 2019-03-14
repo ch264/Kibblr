@@ -21,6 +21,15 @@ footer {
     margin: auto;
 }
 
+.search-results a {
+    text-decoration: none;
+    font-size: 2em;
+    color: #009966;
+}
+.search-results a:hover {
+    text-decoration: underline
+    
+}
 
 /******************
    Header and Nav Bar
@@ -71,6 +80,10 @@ h2 {
     color: #009966;
     font-size: 23px;
     letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
 }
 
 img.kibblr-between-header {

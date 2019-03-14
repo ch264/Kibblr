@@ -7,7 +7,7 @@ const app = express();
 const db = require('./models');
 
 //handlebars
-const handlebars = require('handlebars');
+// const handlebars = require('handlebars');
 
 //add bodyparser
 const bodyParser = require('body-parser');

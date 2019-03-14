@@ -1,15 +1,28 @@
 //jshint esversion:6
 $(function() {
     console.log("ready!");
+
+    //Clicking on header leads to main page
+    $('.navbar-brand').click(function(e) {
+        e.preventDefault();
+        window.location.href = "/";
+    });
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // rendering places and associated reviews to page 
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
     // Ajax call to keep place review on place page  
     let placeName = $('.places').text();
     let placeId = '';
+    // for hardcoded places. look into db and populate page with seed data, on document ready
     $.ajax({
         method: 'GET',
         url: `/api/placename/${placeName}`,
         success: setReviews,
         error: (err) => console.log(err)
     });
+
+    // place is the responce we get back and we take its ID to put into the url for the server
     function setReviews(place) {
         placeId = place._id;
         console.log(place)
@@ -19,13 +32,22 @@ $(function() {
             success: (res) => {
                 console.log(res);
                 res.forEach(review => {
-                    $('.append-id').append(`<li><h2>${review.rating}, ${review.text}</h2></li>`);
+                    $('.append-id').prepend(`
+                    <hr>
+                    <div>
+                        <h2>My Rating: ${review.rating}, Because: ${review.text}</h2>
+                        <button type="button" name="button" class="review-button-delete btn pull-right">Delete</button>
+                        <button type="button" class="review-button-edit btn pull-right">Edit</button>
+                    </div>`);
                 })
             },
             error: (err) => console.log(err)
         });
     }
+
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
     //Create A User
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
     $('.signUpButton').submit(function(e) {
         e.preventDefault();
         $.ajax({
@@ -37,18 +59,14 @@ $(function() {
                 password: password,
                 username: username
             },
-            success: successUser,
-            error: errorUser
+            success: (res) => console.log('User Created', res),
+            error: (err) => console.log("Could not create User", err)
         });
     });
-    function successUser() {
-        console.log('User Created');
-    }
-    function errorUser() {
-        console.log("Could not Create User");
-    }
-    //Sign A User In
-    //Search API
+
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Search API
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
     $('#findPlace').submit(function(e) {
         e.preventDefault();
         let search = $('#searchTerm').val();
@@ -56,9 +74,10 @@ $(function() {
             method: 'GET',
             url: `/api/search?place=${search}`,
             success: successSearch,
-            error: errorSearch
+            error: (err) => console.log("Could not find searched place", err)
         });
     });
+
     function successSearch(response) {
         clearSearchItems();
         response.forEach(function(element) {
@@ -67,26 +86,27 @@ $(function() {
             console.log(placeNameFix);
             console.log(placeLink);
             $('.searchedPlaces').append(
-                `<li><a href=${placeLink}>${placeNameFix}</a></li>`
+                `<hr> <div class="search-results"> <li><a href=${placeLink}>${placeNameFix}</a></li> <div>`
             );
         });
     }
-    function errorSearch(e) {
-        console.log("Search not found");
-    }
+
     function clearSearchItems() {
+        // empty is jquery method
         $(`.searchedPlaces`).empty();
     }
-    //Clicking on header leads to main page
-    $('.navbar-brand').click(function(e) {
-        e.preventDefault();
-        window.location.href = "/";
-    });
+
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
     // create reviewform on click 
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
     $('#form').hide();
     $('.createReviewButton').on('click', function() {
         $('#form').slideToggle();
     });
+
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Create review
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
     $('.clickReview').on('click', function(e) {
         e.preventDefault();
         // console.log($('#review').serialize());
@@ -97,19 +117,46 @@ $(function() {
             method: 'POST',
             url: '/api/review',
             data: review,
-            success: newReviewSuccess,
+            success: json => { $('.append-id').prepend(`
+                <hr class="edit-button-show">
+                    <h2> My Rating: ${json.rating} <br> Reason for my rating: ${json.text}</h2>
+                    <button type="button" name="button" class="review-button-delete btn">Delete</button>
+                    <button type="button" class="review-button-edit btn">Edit</button>
+                </a>`);},
             error: newReviewError
         });
     });
-    function newReviewSuccess(json) {
-        // console.log(json);
-        $('.append-id').append(`<li>${json.rating}, ${json.text}</li>`);
-        // console.log($('.append-id'));
-    }
+
     function newReviewError(error) {
         console.log(error);
-        console.log("error on new review creation");
+        alert("error on new review creation, please try again later");
     }
+
+    // //////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// render reviews and edit button
+    // /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    $('.review-button-delete').on('click', function(e) {
+        e.preventDefault();
+        console.log("delete button clicked")
+    })
+
+    $('.review-button-edit').on('click', function(e) {
+        console.log("edit button clicked")
+    })
+
+
+
+
+
+
+
+
+    
+
+
+
+
     // keep new reviews on page after page refresh
     // function reviewRemainSuccess(response) {
     //     for(let i = 0; i < response.review.length; i++) {
@@ -120,6 +167,9 @@ $(function() {
     // function reviewRemainError(error) {
     //     console.log(error);
     // }
+
+
+
     //Bootstrap Sign Up Form Validator
     (function() {
         'use strict';
@@ -138,6 +188,10 @@ $(function() {
             });
         }, false);
     })();
+
+
+
+
     // after login set user to local storage
     // on click grab two things from html
     // $('.loginUser').on('click', function(e) {
