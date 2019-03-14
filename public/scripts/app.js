@@ -121,7 +121,7 @@ $(function() {
                 <hr class="edit-button-show">
                     <h2> My Rating: ${json.rating} <br> Reason for my rating: ${json.text}</h2>
                     <button type="button" name="button" class="review-button-delete btn">Delete</button>
-                    <button type="button" class="review-button-edit btn">Edit</button>
+                    <button type="button" nameclass="review-button-edit btn">Edit</button>
                 </a>`);},
             error: newReviewError
         });
@@ -132,16 +132,42 @@ $(function() {
         alert("error on new review creation, please try again later");
     }
 
-    // //////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// render reviews and edit button
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Delete Review
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $('.review-button-delete').on('click', function(e) {
+    $('.append-id').on('click','.review-button-delete',  function(e) {
         e.preventDefault();
         console.log("delete button clicked")
+        $.ajax({
+            method: 'DELETE',
+            url: "/api/review/"+$(this).attr('data-id'),
+            success: deleteSuccess,
+            error: (err) => console.log("Could not delete this review", err)
+        });
     })
 
-    $('.review-button-edit').on('click', function(e) {
+    function deleteSuccess(review) {
+        let review = json;
+        console.log('this is json', json)
+        let reviewId = review._id;
+        console.log('delete this videogame with Id:', videogameId);
+        // find the videogame with the correct ID and remove it from our allVideogames array
+        for(var i = 0; i < allVideogames.length; i++) {
+            if(allVideogames[i]._id === videogameId) {
+                allVideogames.splice(i, 1);
+                break;  // we found our videogame - no reason to keep searching (this is why we didn't use forEach)
+            }
+        }
+    }
+
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// Delete Review
+    // ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    $('.append-id').on('click', '.review-button-edit', function(e) {
         console.log("edit button clicked")
     })
 
