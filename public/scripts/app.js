@@ -36,7 +36,7 @@ $(function() {
                     <hr>
                     <div>
                         <h2>My Rating: ${review.rating}, Because: ${review.text}</h2>
-                        <button type="button" name="button" class="review-button-delete btn pull-right">Delete</button>
+                        <button type="button" name="button" class="review-button-delete btn pull-right" data-id=${review._id}>Delete</button>
                         <button type="button" class="review-button-edit btn pull-right">Edit</button>
                     </div>`);
                 })
@@ -117,10 +117,11 @@ $(function() {
             method: 'POST',
             url: '/api/review',
             data: review,
-            success: json => { $('.append-id').prepend(`
+            success: json => { console.log(json);
+                $('.append-id').prepend(`
                 <hr class="edit-button-show">
                     <h2> My Rating: ${json.rating} <br> Reason for my rating: ${json.text}</h2>
-                    <button type="button" name="button" class="review-button-delete btn">Delete</button>
+                    <button type="button" name="button" class="review-button-delete btn" >Delete</button>
                     <button type="button" nameclass="review-button-edit btn">Edit</button>
                 </a>`);},
             error: newReviewError
@@ -132,33 +133,38 @@ $(function() {
         alert("error on new review creation, please try again later");
     }
 
-    // ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////////
     /// Delete Review
-    // ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////////
 
     $('.append-id').on('click','.review-button-delete',  function(e) {
         e.preventDefault();
-        console.log("delete button clicked")
+        console.log(e)
         $.ajax({
             method: 'DELETE',
-            url: "/api/review/"+$(this).attr('data-id'),
+            url: "/api/review/" +$(this).attr('data-id'),
             success: deleteSuccess,
             error: (err) => console.log("Could not delete this review", err)
         });
     })
 
-    function deleteSuccess(review) {
-        let review = json;
+    function deleteSuccess(json) {
         console.log('this is json', json)
-        let reviewId = review._id;
-        console.log('delete this videogame with Id:', videogameId);
-        // find the videogame with the correct ID and remove it from our allVideogames array
-        for(var i = 0; i < allVideogames.length; i++) {
-            if(allVideogames[i]._id === videogameId) {
-                allVideogames.splice(i, 1);
-                break;  // we found our videogame - no reason to keep searching (this is why we didn't use forEach)
-            }
-        }
+        // let reviewId = review._id;
+        // console.log('delete this review with Id:', reviewId);
+        // if (review._id == reviewId) {
+        //     $('.append-id').hide();
+        // }
+
+        // find the post with the correct ID and remove it from our database
+        // for(var i = 0; i < posts.length; i++) {
+        //     if(post._id === postId) {
+        //         allVideogames.splice(i, 1);
+        //         break;  // we found our videogame - no reason to keep searching (this is why we didn't use forEach)
+            // }
+
+            // pass in jquery remove method to remoe
+            // https://www.w3schools.com/jquery/html_remove.asp
     }
 
     // ////////////////////////////////////////////////////////////////////////////////////////////////////

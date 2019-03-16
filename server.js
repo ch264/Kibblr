@@ -58,6 +58,7 @@ app.get('/', (req, res) => {
     res.sendFile('views/index.html', { root: __dirname });
 });
 
+// host HTML pages on root route in server. so move html files to views folder and write out new urls here.
 // app.get('/one', (req, res) => {
 //     res.sendFile('views/restaurantOne.html', { root: __dirname });
 // });
@@ -253,10 +254,12 @@ app.delete('/api/review/:id', (req, res) => {
     let reviewId = req.params.id;
     db.Review.findOneAndRemove({ _id: reviewId })
         .exec((err, deletedReview) => {
-            if (err) return console.log(err);
+            if (err) return console.log('server delete error:', err);
             res.json(deletedReview);
         });
 });
+
+
 
 //////////////////
 // Places Routes
