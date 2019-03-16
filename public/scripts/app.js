@@ -38,6 +38,12 @@ $(function() {
                         <h2>My Rating: ${review.rating}, Because: ${review.text}</h2>
                         <button type="button" name="button" class="review-button-delete btn pull-right" data-id=${review._id}>Delete</button>
                         <button type="button" class="review-button-edit btn pull-right">Edit</button>
+
+                        <form class="edit-input" style="display: none" data-id="${review._id}">
+                        <input type="text" name="title" value="${review.title}" />
+                        <input type="text" name="avatar" value="${review.avatar}" />
+                        <button type="submit" class="videogame-button-edit-submit btn btn-secondary">Save</button>
+                    </form>
                     </div>`);
                 })
             },
@@ -120,10 +126,17 @@ $(function() {
             success: json => { console.log(json);
                 $('.append-id').prepend(`
                 <hr class="edit-button-show">
+                <div>
                     <h2> My Rating: ${json.rating} <br> Reason for my rating: ${json.text}</h2>
                     <button type="button" name="button" class="review-button-delete btn" >Delete</button>
                     <button type="button" nameclass="review-button-edit btn">Edit</button>
-                </a>`);},
+
+                    <form class="edit-input" style="display: none" data-id="${review._id}">
+                    <input type="text" name="title" value="${videogame.title}" />
+                    <input type="text" name="avatar" value="${videogame.avatar}" />
+                    <button type="submit" class="videogame-button-edit-submit btn btn-secondary">Save</button>
+                </form>
+                </div>`);},
             error: newReviewError
         });
     });
@@ -150,43 +163,26 @@ $(function() {
 
     function deleteSuccess(json) {
         console.log('this is json', json)
-        // let reviewId = review._id;
-        // console.log('delete this review with Id:', reviewId);
-        // if (review._id == reviewId) {
-        //     $('.append-id').hide();
-        // }
-
-        // find the post with the correct ID and remove it from our database
-        // for(var i = 0; i < posts.length; i++) {
-        //     if(post._id === postId) {
-        //         allVideogames.splice(i, 1);
-        //         break;  // we found our videogame - no reason to keep searching (this is why we didn't use forEach)
-            // }
-
-            // pass in jquery remove method to remoe
-            // https://www.w3schools.com/jquery/html_remove.asp
     }
 
-    // ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// Delete Review
-    // ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+    // /////////////////////////////////////////////////////////////////////////////////////////
+    /// Edit Review
+    // /////////////////////////////////////////////////////////////////////////////////////////
 
     $('.append-id').on('click', '.review-button-edit', function(e) {
+        e.preventDefault();
         console.log("edit button clicked")
+        $.ajax({
+            method: 'PUT',
+            url: "/api/review/" +$(this).attr('data-id'),
+            success: editSuccess,
+            error: (err) => console.log(' Could not edit this review', err)
+        })
     })
 
+    function editSuccess(json) {
 
-
-
-
-
-
-
-    
-
-
+    }
 
 
     // keep new reviews on page after page refresh
@@ -199,8 +195,6 @@ $(function() {
     // function reviewRemainError(error) {
     //     console.log(error);
     // }
-
-
 
     //Bootstrap Sign Up Form Validator
     (function() {
