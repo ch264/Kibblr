@@ -37,13 +37,11 @@ $(function() {
                     <div>
                         <h2>My Rating: ${review.rating}, Because: ${review.text}</h2>
                         <button type="button" name="button" class="review-button-delete btn pull-right" data-id=${review._id}>Delete</button>
-                        <button type="button" class="review-button-edit btn pull-right">Edit</button>
+                        <button type="button" class="review-button-edit btn pull-right" data-id="${review._id}">Edit</button>
 
                         <form class="edit-input" style="display: none" data-id="${review._id}">
-                        <input type="text" name="title" value="${review.title}" />
-                        <input type="text" name="avatar" value="${review.avatar}" />
-                        <button type="submit" class="videogame-button-edit-submit btn btn-secondary">Save</button>
-                    </form>
+                            <input type="text" name="title" value="" />                            <button type="submit" class="review-button-edit-save">Save</button>
+                        </form>
                     </div>`);
                 })
             },
@@ -132,8 +130,7 @@ $(function() {
                     <button type="button" nameclass="review-button-edit btn">Edit</button>
 
                     <form class="edit-input" style="display: none" data-id="${review._id}">
-                    <input type="text" name="title" value="${videogame.title}" />
-                    <input type="text" name="avatar" value="${videogame.avatar}" />
+                    <input type="text" name="input" value="Review" />
                     <button type="submit" class="videogame-button-edit-submit btn btn-secondary">Save</button>
                 </form>
                 </div>`);},
@@ -181,7 +178,8 @@ $(function() {
     })
 
     function editSuccess(json) {
-
+        console.log(`the edit Success fxn works`)
+        $(this).parent().find(".review-button-edit-save").show();
     }
 
 
