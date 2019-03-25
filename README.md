@@ -2,12 +2,8 @@
 A full-stack web application built from the ground up by Brandon Castillo, Tiffany Teaze and Christina Hastenrath.
 
 ### Kibblr
-Short explanation of the project (1-2 sentences) - what is the goal of the project and/or main functionality?
-<<<<<<< HEAD
 Kibblr is a yelp like app for users to leave reviews about restaurants, rating them on their dog friendliness.
-=======
-Kibblr is a yelp like app for users to leave reviews about dog friendly restaurants based on the dogs experience. 
->>>>>>> master
+
 
 Link to project hosted on Heroku
 https://kibblr.herokuapp.com/
@@ -39,9 +35,4 @@ What changes would you make to your project if you continue to work on it? (bull
 - finish login
 - add parks and stores 
 - add a rating feature
-<<<<<<< HEAD
 - make search work on heroku
-
-=======
-- make search work on heroku
->>>>>>> master
