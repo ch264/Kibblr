@@ -1,15 +1,12 @@
-# Project01
-A full-stack web application built from the ground up by Brandon Castillo, Tiffany Teaze and Christina Hastenrath.
-
 ### Kibblr
-Kibblr is a yelp like app for users to leave reviews about restaurants, rating them on their dog friendliness.
+Kibblr is a yelp like app for users to leave reviews about restaurants, rating them on their dog friendliness. Kibblr is a full-stack web application built from the ground up by Brandon Castillo, Tiffany Teaze and Christina Hastenrath.
 
 
-Link to project hosted on Heroku
+Demo
 https://kibblr.herokuapp.com/
 
 Link to project on github
-https://github.com/brandonmcastillo/Project01
+https://github.com/brandonmcastillo/Project-Kibblr
 
 ## Technologies Used 
 What technologies did you use to develop this project? (bullet points)
@@ -32,7 +29,6 @@ What features does your app have? (bullet points)
 What changes would you make to your project if you continue to work on it? (bullet points)
 - finish the AJAX calls to do CRUD on frontend
 - integrate google maps API to show places
-- finish login
 - add parks and stores 
 - add a rating feature
 - make search work on heroku
