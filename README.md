@@ -8,17 +8,18 @@ https://kibblr.herokuapp.com/
 Link to project on github
 https://github.com/brandonmcastillo/Project-Kibblr
 
-## Technologies Used 
-What technologies did you use to develop this project? (bullet points)
-- HTML
-- CSS
-- jQuery
-- Node.js
-- Express
-- Mongoose
-- MongoDB
 
 ## Notable Features
+=======
+HTML
+CSS
+jQuery
+Node.js
+Express
+Mongoose
+MongoDB
+Notable Features
+
 What features does your app have? (bullet points)
 - user login / signup
 - landing page with search function that lists places from database with links to their pages
@@ -31,3 +32,4 @@ What features does your app have? (bullet points)
 - add parks and stores 
 - add a rating feature
 - make search work on heroku
+
