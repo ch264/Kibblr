@@ -1,4 +1,4 @@
-### Kibblr
+# Kibblr
 Kibblr is a yelp like app for users to leave reviews about restaurants, rating them on their dog friendliness. Kibblr is a full-stack web application built from the ground up by Brandon Castillo, Tiffany Teaze and Christina Hastenrath.
 
 
