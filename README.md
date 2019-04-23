@@ -9,18 +9,19 @@ Link to project on github
 https://github.com/brandonmcastillo/Project-Kibblr
 
 
-## Notable Features
+## Techstack
 
 HTML
 CSS
+Bootstrap
 jQuery
 Node.js
 Express
 Mongoose
 MongoDB
-Notable Features
 
-What features does your app have? (bullet points)
+
+## What features does your app have? (bullet points)
 - user login / signup
 - landing page with search function that lists places from database with links to their pages
 - individual pages for restaurants
