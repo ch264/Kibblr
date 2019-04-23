@@ -10,7 +10,7 @@ https://github.com/brandonmcastillo/Project-Kibblr
 
 
 ## Notable Features
-=======
+
 HTML
 CSS
 jQuery
