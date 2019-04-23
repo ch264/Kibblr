@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kibblr</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+
+<body>
+    <!-- Header and Nav Bar -->
+    <header>
+        <div class="container-fluid kibblr-top-nav">
+            <nav class="navbar navbar-expand navbar-fixed-top kibblr-top-nav">
+                <a class="navbar-brand" href=""><img src="../images/kibblr-logos-white.png" width="30" height="30" class="d-inline-block align-top kibblr-logo" alt=""></a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+                <div class="collapse navbar-collapse " id="navbarNav">
+                    <ul class="navbar-nav ml-auto ">
+                        <li class="nav-item"><a class="nav-link kibblr-nav" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link kibblr-nav" href="signup.html">Sign Up</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 imagewrapper">
+                    <img src="../images/kibblr-dogstock1.jpg" class="dog-image">
+                </div>
+                <!-- Sign In Form -->
+                <div class="col-md-6 wrapper">
+                    <form id="loginUser" onSubmit="return validateForm();" method="POST" action="/" class="form-signin">
+                        <img src="../images/kibblr-logos-paw-yellow.png" class="yellow-paw-image">
+                        <h2 class="form-signin-heading">Login!</h2>
+                        <input type="text" class="username form-control" name="username" placeholder="Username" value="" required="" autofocus="" />
+                        <input type="password" class="password form-control" name="password" placeholder="Password" value="" required="" />
+                        <label class="checkbox"><input type="checkbox"  value="remember-me" id="rememberMe" name="rememberMe">Remember me</label>
+                        <label class="list-inline">Forgot Password?</label>
+                        <button type="submit" class="btn btn-small loginUser btn-block">Submit</button>
+                        <p>Not a member?<a href="#" class="member-signin">Sign Up!</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="kibblr-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <p>© 2019 TCB</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kibblr</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/signup.css">
+
+</head>
+
+<body>
+    <!-- Header and Nav Bar -->
+    <header>
+        <div class="container-fluid kibblr-top-nav">
+            <nav class="navbar navbar-expand navbar-fixed-top kibblr-top-nav">
+                <a class="navbar-brand" href=""><img src="../images/kibblr-logos-white.png" width="30" height="30" class="d-inline-block align-top kibblr-logo" alt=""></a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse " id="navbarNav">
+                    <ul class="navbar-nav ml-auto ">
+                        <li class="nav-item"><a class="nav-link kibblr-nav" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link kibblr-nav" href="signup.html">Sign Up</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 imagewrapper">
+                    <img src="../images/kibblr-dogstock2.jpg" class="dog-imagetwo">
+                </div>
+                <!-- Sign Up Form -->
+                <div class="col-md-6">
+
+                    <!-- //Get Request for Sign Up -->
+                    <form id="newUser" method="POST" action="/api/user" target="_blank" class="needs-validation" novalidate>
+                        <img src="../images/kibblr-logos-yellow-bone.png" class="yellow-bone-image">
+                        <h3>Sign up for Free!</h3>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                                    </div>
+                                    <input type="text" name="username" class=" form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
+                                    <div class="invalid-tooltip">
+                                        Please choose a unique and valid username.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+
+                                <input type="text" name="name" class="form-control" id="validationTooltip01" placeholder="Name" value="" required>
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 lg-12 mb-3">
+
+                                <input type="text" name="email" class="form-control" id="validationTooltip03" placeholder="Email" required>
+                                <div class="valid-tooltip">
+                                    Please provide a valid email.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+
+                                <input type="text" name="password" class="form-control" id="validationTooltip04" placeholder="Password" required>
+                                <div class="valid-tooltip">
+                                    Please provide a valid password.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+
+                                <input type="text" class="form-control" id="validationTooltip05" placeholder="Zipcode" required>
+                                <div class="invalid-tooltip">
+                                    Please provide a valid zip.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-button">
+                            <div class="col-md-12 mb-3">
+                                <button type="submit" class="btn btn-light signUpButton needs-validation">Sign Up</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <footer>
+                        <p>© 2019 TCB</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="scripts/app.js"></script>
+</body>
+
+</html>
